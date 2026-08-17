@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Andrade — Design Gráfico &amp; Identidade Visual</title>
+  <meta name="description" content="Lucas Andrade, designer gráfico e consultor criativo. Identidade visual, editorial, motion design e social media para marcas, agências e empreendedores." />
+  <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
+
+  <!-- Theme init: runs before paint to avoid flash of wrong theme -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var dark = stored ? stored === 'dark' : prefersDark;
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <script type="module" src="/src/main.js"></script>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="overflow-x-hidden selection:bg-lilac">
+
+  <!-- ============ HEADER ============ -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 text-ink dark:text-white" aria-label="Lucas Andrade Design — início">
+        <svg viewBox="0 0 96.16 96.15" class="h-8 w-8 text-[#5100FF] dark:text-white" fill="currentColor" aria-hidden="true">
+          <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+          <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+          <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+        </svg>
+        <span class="hidden sm:block font-display text-sm tracking-[0.14em] uppercase">Lucas Andrade <span class="text-gray-400 dark:text-gray-500 font-sans normal-case tracking-normal">design</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-9 font-mono-brand text-xs uppercase tracking-[0.12em] text-gray-600 dark:text-gray-300">
+        <a href="#projetos" class="hover:text-brand dark:hover:text-lilac transition-colors">Projetos</a>
+        <a href="#sobre" class="hover:text-brand dark:hover:text-lilac transition-colors">Sobre</a>
+        <a href="#depoimentos" class="hover:text-brand dark:hover:text-lilac transition-colors">Depoimentos</a>
+        <a href="#contato" class="hover:text-brand dark:hover:text-lilac transition-colors">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Alternar tema claro/escuro" class="grid place-items-center h-10 w-10 rounded-full text-gray-600 dark:text-gray-300 hover:text-brand dark:hover:text-lilac hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <svg id="icon-sun" class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg id="icon-moon" class="h-[18px] w-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+
+        <a href="#contato" class="hidden sm:inline-flex items-center gap-2 ml-1 px-5 h-10 chamfer-tr bg-ink dark:bg-white text-white dark:text-ink font-mono-brand text-xs uppercase tracking-[0.1em] hover:glow-lilac-sm transition-shadow">
+          Fale comigo
+        </a>
+
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu" class="md:hidden grid place-items-center h-10 w-10 text-gray-700 dark:text-gray-200">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div id="mobile-nav" hidden class="md:hidden glass bg-white/90 dark:bg-ink/90 border-t border-black/5 dark:border-white/10">
+      <nav class="flex flex-col px-6 py-6 gap-5 font-mono-brand text-sm uppercase tracking-[0.1em] text-gray-700 dark:text-gray-200">
+        <a href="#projetos" class="nav-mobile-link">Projetos</a>
+        <a href="#sobre" class="nav-mobile-link">Sobre</a>
+        <a href="#depoimentos" class="nav-mobile-link">Depoimentos</a>
+        <a href="#contato" class="nav-mobile-link text-brand dark:text-lilac">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="relative pt-40 pb-28 lg:pt-52 lg:pb-36 overflow-hidden">
+      <!-- signature ribbon glows -->
+      <div class="ribbon h-[420px] w-[620px] -top-24 -left-40 rotate-[-8deg]" style="clip-path: polygon(0 30%, 65% 0, 100% 22%, 40% 100%);"></div>
+      <div class="ribbon h-[300px] w-[420px] top-40 -right-32 rotate-[10deg] opacity-40" style="clip-path: polygon(10% 0, 100% 15%, 85% 100%, 0 70%);"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-y-14 gap-x-8 items-center">
+        <div class="lg:col-span-7 animate-fade-up">
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-6">
+            Design gráfico · Identidade visual · Motion
+          </p>
+          <h1 class="font-display font-medium text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.2rem] tracking-tight text-ink dark:text-white">
+            Vamos criar algo<br />
+            <span class="text-gradient-brand">extraordinário</span>, <span class="font-light">Algo que marque, converta e venda.</span>
+          </h1>
+          <p class="mt-7 max-w-md text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Sou Lucas Andrade, designer gráfico e consultor criativo. Construo sistemas visuais para marcas, agências e empreendedores que precisam ser lembrados pelo motivo certo.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-4">
+            <a href="#projetos" class="group inline-flex items-center gap-2 px-7 py-3.5 chamfer-tr bg-brand text-white font-mono-brand text-xs uppercase tracking-[0.1em] glow-lilac hover:bg-brand-ink transition-colors">
+              Ver projetos
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#contato" class="inline-flex items-center px-7 py-3.5 border border-gray-300 dark:border-gray-700 text-ink dark:text-white font-mono-brand text-xs uppercase tracking-[0.1em] hover:border-brand dark:hover:border-lilac hover:text-brand dark:hover:text-lilac transition-colors">
+              Falar comigo
+            </a>
+          </div>
+        </div>
+
+        <!-- floating case snapshots -->
+        <div class="lg:col-span-5 relative h-[340px] sm:h-[420px]" id="hero-float">
+          <div class="absolute left-2 top-4 w-[68%] aspect-[4/5] chamfer-tr-lg overflow-hidden shadow-2xl shadow-black/30 rotate-[-4deg] card-hover">
+            <img src="/projetos/tp/capa.png" alt="TP Consultoria" class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            <div class="relative h-full flex flex-col justify-between p-6">
+              <span class="font-mono-brand text-[10px] uppercase tracking-[0.18em] text-white/70">Identidade visual</span>
+              <span class="font-mono-brand text-[10px] uppercase tracking-[0.18em] text-white">TP Consultoria</span>
+            </div>
+          </div>
+          <div class="absolute right-0 bottom-2 w-[58%] aspect-[4/5] chamfer-tr-lg overflow-hidden shadow-2xl shadow-black/30 rotate-[5deg] card-hover">
+            <img src="/projetos/anthony/capa.png" alt="Anthony Carbert" class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            <div class="relative h-full flex flex-col justify-between p-6">
+              <span class="font-mono-brand text-[10px] uppercase tracking-[0.18em] text-white/70">Artista musical</span>
+              <span class="font-mono-brand text-[10px] uppercase tracking-[0.18em] text-white">Anthony Carbert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="relative py-24 lg:py-32 border-t border-black/5 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4">
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Sobre</p>
+          <h2 class="font-display font-medium text-3xl lg:text-4xl leading-tight text-ink dark:text-white">
+            Direção de marca com peso conceitual.
+          </h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6">
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço. Não entrego só uma logo — entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.
+          </p>
+          <p class="mt-5 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Atendo marcas, agências e empreendedores que já entenderam que identidade visual é decisão de negócio, não enfeite.
+          </p>
+
+          <dl class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+            <div>
+              <dt class="font-display text-3xl text-ink dark:text-white">8+</dt>
+              <dd class="mt-1 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Anos de atuação</dd>
+            </div>
+            <div>
+              <dt class="font-display text-3xl text-ink dark:text-white">4</dt>
+              <dd class="mt-1 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Frentes de design</dd>
+            </div>
+            <div>
+              <dt class="font-display text-3xl text-ink dark:text-white">100%</dt>
+              <dd class="mt-1 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Sistema, não peça avulsa</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos" class="relative py-24 lg:py-32 bg-white dark:bg-ink-2 border-t border-black/5 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
+          <div>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Projetos selecionados</p>
+            <h2 class="font-display font-medium text-3xl lg:text-4xl leading-tight text-ink dark:text-white max-w-lg">
+              Cases que constroem sistema, não só imagem.
+            </h2>
+          </div>
+
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos por área">
+            <button type="button" data-filter="todos" class="filter-btn is-active">Todos</button>
+            <button type="button" data-filter="corporativo" class="filter-btn">Corporativo</button>
+            <button type="button" data-filter="musica" class="filter-btn">Música</button>
+            <button type="button" data-filter="institucional" class="filter-btn">Institucional</button>
+          </div>
+        </div>
+
+        <div id="project-grid" class="grid sm:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-16 lg:gap-y-20">
+          <!-- Case 1: TP Consultoria -->
+          <article data-category="corporativo" class="project-card">
+            <a href="/projeto.html?slug=tp" class="group block">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">TP Consultoria</h3>
+              <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Consultoria de benefícios</p>
+              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden">
+                <img src="/projetos/tp/capa.png" alt="TP Consultoria" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 2: Anthony Carbert -->
+          <article data-category="musica" class="project-card">
+            <a href="/projeto.html?slug=anthony" class="group block">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Anthony Carbert</h3>
+              <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Artista musical</p>
+              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden">
+                <img src="/projetos/anthony/capa.png" alt="Anthony Carbert" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 3: Solve Scale -->
+          <article data-category="corporativo" class="project-card">
+            <a href="/projeto.html?slug=solve" class="group block">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Solve Scale</h3>
+              <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Marketing empresarial</p>
+              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden">
+                <img src="/projetos/solve/capa.webp" alt="Solve Scale" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 4: Instituto Escola Informada -->
+          <article data-category="institucional" class="project-card">
+            <a href="/projeto.html?slug=informada" class="group block">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
+              <h3 class="font-display text-2xl sm:text-3xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Instituto Escola Informada</h3>
+              <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Instituto de proteção infantil</p>
+              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden">
+                <img src="/projetos/informada/capa.webp" alt="Instituto Escola Informada" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              </div>
+            </a>
+          </article>
+
+          <!-- Ver mais projetos -->
+          <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="project-card-frame chamfer-tr-lg aspect-[16/11] flex items-center justify-center gap-3 bg-brand dark:bg-lilac text-white dark:text-ink hover:brightness-110 transition-[filter]">
+            <span class="font-mono-brand text-sm uppercase tracking-[0.1em]">Ver mais projetos</span>
+            <span class="grid place-items-center h-9 w-9 rounded-full bg-white/15">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTOS ============ -->
+    <section id="depoimentos" class="relative py-24 lg:py-32 bg-mist dark:bg-ink border-t border-black/5 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Depoimentos</p>
+        <h2 class="font-display font-medium text-3xl lg:text-4xl leading-tight text-ink dark:text-white max-w-lg mb-14">
+          O que dizem sobre trabalhar comigo.
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <blockquote class="p-8 bg-surface chamfer-tr border border-black/5 dark:border-white/10">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou — da parede da sede ao carro de corrida."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Equipe TP Consultoria</footer>
+          </blockquote>
+          <blockquote class="p-8 bg-surface chamfer-tr border border-black/5 dark:border-white/10">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom — e continua parecendo eu."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Anthony Carbert</footer>
+          </blockquote>
+          <blockquote class="p-8 bg-surface chamfer-tr border border-black/5 dark:border-white/10">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Cliente, consultoria de benefícios</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="relative py-28 lg:py-36 bg-ink overflow-hidden">
+      <div class="ribbon h-[380px] w-[560px] -bottom-32 left-1/2 -translate-x-1/2 opacity-50" style="clip-path: polygon(15% 0, 100% 20%, 85% 100%, 0 75%);"></div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-5">Contato</p>
+        <h2 class="font-display font-medium text-3xl sm:text-5xl leading-tight text-white">
+          Vamos construir algo com direção.
+        </h2>
+        <p class="mt-6 text-lg text-gray-300 max-w-xl mx-auto">
+          Se sua marca precisa de mais do que um retoque visual, bora conversar sobre o sistema certo pra ela.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a href="https://wa.me/5561982364297" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-3.5 chamfer-tr bg-lilac text-ink font-mono-brand text-xs uppercase tracking-[0.1em] glow-lilac hover:brightness-110 transition">
+            Chamar no WhatsApp
+          </a>
+          <a href="mailto:lucastele356@gmail.com" class="inline-flex items-center px-7 py-3.5 border border-white/20 text-white font-mono-brand text-xs uppercase tracking-[0.1em] hover:border-lilac hover:text-lilac transition-colors">
+            Enviar e-mail
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink border-t border-white/10 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+        <div class="max-w-xs">
+          <a href="#top" class="flex items-center gap-3 text-white" aria-label="Lucas Andrade Design — início">
+            <svg viewBox="0 0 96.16 96.15" class="h-7 w-7 text-[#8A7DFF] dark:text-white" fill="currentColor" aria-hidden="true">
+              <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+              <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+              <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+            </svg>
+            <span class="font-display text-sm tracking-[0.14em] uppercase">Lucas Andrade</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-400 leading-relaxed">Design gráfico e consultoria criativa: identidade visual, editorial, motion e social media.</p>
+        </div>
+
+        <nav class="flex gap-10 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">
+          <div class="flex flex-col gap-3">
+            <span class="text-gray-600">Navegação</span>
+            <a href="#projetos" class="hover:text-lilac transition-colors">Projetos</a>
+            <a href="#sobre" class="hover:text-lilac transition-colors">Sobre</a>
+            <a href="#depoimentos" class="hover:text-lilac transition-colors">Depoimentos</a>
+            <a href="#contato" class="hover:text-lilac transition-colors">Contato</a>
+          </div>
+          <div class="flex flex-col gap-3">
+            <span class="text-gray-600">Redes</span>
+            <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">Instagram</a>
+            <a href="#" class="hover:text-lilac transition-colors">Behance</a>
+            <a href="#" class="hover:text-lilac transition-colors">LinkedIn</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-mono-brand text-[11px] text-gray-500">© 2026 Lucas Andrade Design. Todos os direitos reservados.</p>
+        <a href="#contato" class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-lilac hover:text-white transition-colors">Fale comigo →</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

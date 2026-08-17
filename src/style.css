@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* Toggle dark mode via a `.dark` class on <html> instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Clash Display", "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Brand ramp — pulled from the mark's fold gradient (deep violet -> lilac -> magenta) */
+  --color-brand-ink: #4c1b8c;
+  --color-brand: #7c3aed;
+  --color-lilac: #b18cf2;
+  --color-lilac-soft: #d9c7fa;
+  --color-magenta: #e14fcb;
+
+  /* Neutral surfaces — registered as theme colors so opacity modifiers (bg-ink/75) work */
+  --color-ink: #0b0a0f;
+  --color-ink-2: #14111c;
+  --color-mist: #f4f1f8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-mist text-gray-800 dark:bg-ink dark:text-gray-200;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-lilac);
+    color: #2600ff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lilac);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .bg-surface { @apply bg-white dark:bg-ink-2; }
+
+  .font-display { font-family: var(--font-display); }
+  .font-mono-brand { font-family: var(--font-mono); }
+
+  .text-gradient-brand {
+    background-image: linear-gradient(115deg, var(--color-brand-ink), var(--color-lilac) 55%, var(--color-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Chamfered corners — the mark's stepped-fold language, used instead of border-radius */
+  .chamfer-tr {
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+  .chamfer-tr-lg {
+    clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+  }
+  .chamfer-bl {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  }
+
+  .glow-lilac {
+    box-shadow: 0 0 0 1px rgba(177, 140, 242, 0.35), 0 12px 48px -12px rgba(177, 140, 242, 0.65);
+  }
+  .glow-lilac-sm {
+    box-shadow: 0 0 0 1px rgba(177, 140, 242, 0.3), 0 6px 24px -8px rgba(177, 140, 242, 0.5);
+  }
+
+  .glass {
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  /* Ribbon: the signature ambient fold-shape used behind hero, dividers, contact */
+  .ribbon {
+    position: absolute;
+    pointer-events: none;
+    filter: blur(60px);
+    opacity: 0.55;
+    background: linear-gradient(120deg, var(--color-brand-ink), var(--color-lilac) 50%, var(--color-magenta));
+    animation: drift 16s ease-in-out infinite;
+  }
+  .dark .ribbon { opacity: 0.4; }
+
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .header-scrolled {
+    @apply bg-white/75 dark:bg-ink/75 border-b border-black/5 dark:border-white/10;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  .filter-btn {
+    @apply px-4 py-2 text-[11px] uppercase tracking-[0.1em] border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors;
+    font-family: var(--font-mono);
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+  .filter-btn:hover {
+    @apply border-brand dark:border-lilac text-brand dark:text-lilac;
+  }
+  .filter-btn.is-active {
+    @apply border-brand dark:border-lilac text-brand dark:text-lilac bg-brand/5 dark:bg-lilac/10;
+  }
+
+  .nav-mobile-link {
+    @apply py-1 hover:text-brand dark:hover:text-lilac transition-colors;
+  }
+
+  .project-card {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  /* Project thumbnails grow into place as they enter the viewport on scroll */
+  .project-card-frame {
+    transform: scale(0.86);
+    opacity: 0.75;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
+    will-change: transform;
+  }
+  .project-card-frame.in-view {
+    transform: scale(1);
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .project-card-frame {
+      transform: none;
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  /* Case study layout — sticky metadata sidebar + alternating text/image content */
+  .case-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .case-sidebar {
+    position: sticky;
+    top: 7.5rem;
+    align-self: start;
+  }
+
+  .case-meta-row {
+    @apply py-4 border-t border-black/10 dark:border-white/10;
+  }
+  .case-meta-label {
+    @apply text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400;
+    font-family: var(--font-mono);
+  }
+  .case-meta-value {
+    @apply mt-2 text-ink dark:text-white text-base;
+  }
+
+  .case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .case-content p {
+    @apply text-lg text-gray-600 dark:text-gray-300 leading-relaxed;
+  }
+  .case-content strong {
+    @apply text-ink dark:text-white font-semibold;
+  }
+
+  .case-slide {
+    @apply overflow-hidden shadow-2xl shadow-black/10 dark:shadow-black/50;
+    clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+  }
+  .case-slide img {
+    @apply w-full block;
+  }
+
+  @media (max-width: 900px) {
+    .case-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .case-sidebar {
+      position: static;
+    }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Uses the standalone `translate` property (not `transform`) so it composes
+   cleanly with Tailwind's rotate-[] utility on the same element. */
+@keyframes drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 2% -3%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
