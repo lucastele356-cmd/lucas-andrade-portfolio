@@ -197,6 +197,23 @@
       position: static;
     }
   }
+
+  /* Footer ambient glow — scattered blurred blobs in the brand ramp */
+  .blur {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .blur-1 { width: 260px; height: 260px; top: -90px; left: 2%;  background: var(--color-brand);      opacity: 0.35; }
+  .blur-2 { width: 180px; height: 180px; top: 10px;   left: 20%; background: var(--color-magenta);    opacity: 0.22; }
+  .blur-3 { width: 320px; height: 320px; top: -140px; left: 38%; background: var(--color-lilac);      opacity: 0.28; }
+  .blur-4 { width: 200px; height: 200px; bottom: -70px; left: 55%; background: var(--color-brand-ink); opacity: 0.35; }
+  .blur-5 { width: 240px; height: 240px; top: -60px;  right: 16%; background: var(--color-lilac-soft); opacity: 0.18; }
+  .blur-6 { width: 160px; height: 160px; bottom: 0;   right: 6%;  background: var(--color-magenta);    opacity: 0.25; }
+  .blur-7 { width: 280px; height: 280px; bottom: -120px; right: -70px; background: var(--color-brand); opacity: 0.3; }
+  .blur-8 { width: 140px; height: 140px; top: 40%;    left: 68%;  background: var(--color-lilac);      opacity: 0.2; }
 }
 
 @keyframes fadeUp {
