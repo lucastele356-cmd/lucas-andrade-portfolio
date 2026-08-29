@@ -59,7 +59,10 @@ const heroVideo = document.getElementById('hero-video')
 const reducedMotionForHero = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
-  const notifEls = document.querySelectorAll('.hc-notif')
+  // Headline/sub/actions (.hc-scrub-rise) and the notification tags (.hc-notif)
+  // share one scroll-threshold reveal: headline rises top-to-bottom first
+  // (thresholds 0.02–0.26), then the tags pop in after (0.34–0.58).
+  const scrubRevealEls = document.querySelectorAll('[data-hc-at]')
 
   const armScrub = () => {
     // iOS Safari only paints seeked frames after the video has actually played
@@ -68,8 +71,9 @@ if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
 
     // Hero stays fully opaque through most of the scrub, then dissolves over
     // the final stretch so it hands off to the next section instead of
-    // cutting away the instant the sticky pin releases.
-    const fadeStart = 0.72
+    // cutting away the instant the sticky pin releases. Kept short so the
+    // fade itself doesn't feel like a slow drag.
+    const fadeStart = 0.9
     let targetProgress = 0
     let smoothProgress = 0
     let chasing = false
@@ -108,10 +112,10 @@ if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
       const fade = Math.min(Math.max((targetProgress - fadeStart) / (1 - fadeStart), 0), 1)
       heroCinema.style.opacity = String(1 - fade)
 
-      // Notification tags pop in one by one as their scroll threshold is
-      // crossed, and hide again if the user scrolls back up past it.
-      notifEls.forEach((el) => {
-        const at = Number(el.dataset.notifAt) || 0
+      // Each element pops in once its scroll threshold is crossed, and
+      // hides again if the user scrolls back up past it.
+      scrubRevealEls.forEach((el) => {
+        const at = Number(el.dataset.hcAt) || 0
         el.classList.toggle('is-visible', targetProgress >= at)
       })
 
