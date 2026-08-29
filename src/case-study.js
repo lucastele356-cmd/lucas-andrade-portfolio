@@ -1,4 +1,4 @@
-import { initLayout } from './layout.js'
+import { initLayout, initScrollReveal } from './layout.js'
 import { projetos } from './data/projetos.js'
 
 initLayout()
@@ -38,10 +38,12 @@ if (!projeto) {
     if (bloco.tipo === 'texto') {
       const p = document.createElement('p')
       p.innerHTML = bloco.html
+      p.setAttribute('data-reveal', '')
       content.appendChild(p)
     } else if (bloco.tipo === 'imagem') {
       const wrap = document.createElement('div')
       wrap.className = 'case-slide'
+      wrap.setAttribute('data-reveal', '')
       const img = document.createElement('img')
       img.src = bloco.src
       img.alt = bloco.alt
@@ -53,6 +55,7 @@ if (!projeto) {
       link.href = bloco.href
       link.target = '_blank'
       link.rel = 'noopener'
+      link.setAttribute('data-reveal', '')
       link.className =
         'group self-start inline-flex items-center gap-2 px-6 py-3.5 chamfer-tr bg-brand text-white font-mono-brand text-xs uppercase tracking-[0.1em] glow-lilac hover:bg-brand-ink transition-colors'
       link.innerHTML = `
@@ -62,4 +65,8 @@ if (!projeto) {
       content.appendChild(link)
     }
   })
+
+  // Blocks are inserted after initLayout() already scanned the DOM for
+  // [data-reveal], so wire the reveal choreography again for this content.
+  initScrollReveal(content)
 }

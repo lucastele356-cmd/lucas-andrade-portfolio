@@ -8,17 +8,17 @@
   --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
-  /* Brand ramp — pulled from the mark's fold gradient (deep violet -> lilac -> magenta) */
-  --color-brand-ink: #4c1b8c;
-  --color-brand: #7c3aed;
-  --color-lilac: #b18cf2;
-  --color-lilac-soft: #d9c7fa;
-  --color-magenta: #e14fcb;
+  /* Brand ramp — pulled from the hero portrait's tones (deep navy -> electric blue -> icy cyan) */
+  --color-brand-ink: #14224f;
+  --color-brand: #2952e3;
+  --color-lilac: #6fa8ff;
+  --color-lilac-soft: #cfe3ff;
+  --color-magenta: #5fd4ff;
 
   /* Neutral surfaces — registered as theme colors so opacity modifiers (bg-ink/75) work */
-  --color-ink: #0b0a0f;
-  --color-ink-2: #14111c;
-  --color-mist: #f4f1f8;
+  --color-ink: #070a12;
+  --color-ink-2: #0d1424;
+  --color-mist: #f0f4fb;
 }
 
 @layer base {
@@ -32,7 +32,7 @@
   }
   ::selection {
     background: var(--color-lilac);
-    color: #2600ff;
+    color: #0a1f8f;
   }
   :focus-visible {
     outline: 2px solid var(--color-lilac);
@@ -65,10 +65,10 @@
   }
 
   .glow-lilac {
-    box-shadow: 0 0 0 1px rgba(177, 140, 242, 0.35), 0 12px 48px -12px rgba(177, 140, 242, 0.65);
+    box-shadow: 0 0 0 1px rgba(111, 168, 255, 0.35), 0 12px 48px -12px rgba(111, 168, 255, 0.65);
   }
   .glow-lilac-sm {
-    box-shadow: 0 0 0 1px rgba(177, 140, 242, 0.3), 0 6px 24px -8px rgba(177, 140, 242, 0.5);
+    box-shadow: 0 0 0 1px rgba(111, 168, 255, 0.3), 0 6px 24px -8px rgba(111, 168, 255, 0.5);
   }
 
   .glass {
@@ -96,6 +96,326 @@
 
   .animate-fade-up {
     animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* ---- Cinematic hero ----
+     Structure, unit system and stagger cadence lifted from a full-bleed
+     video-plate hero reference, rebuilt with Lucas's own footage instead of
+     the reference's third-party stock clip. The video's playback position is
+     driven by scroll (see initHeroScrub in main.js) rather than autoplaying
+     on its own — .hero-scrub below supplies the extra scroll distance. */
+  .hero-scrub {
+    position: relative;
+    height: 260vh;
+  }
+
+  .hero-cinema {
+    position: sticky;
+    top: 0;
+    isolation: isolate;
+    overflow: hidden;
+    height: 100svh;
+    background: #050505;
+    will-change: opacity;
+    /* vertically centers .hero-cinema__stage; no justify-content, so it stays
+       at the left (flex-start default) — the other children (plate, notifs,
+       logos) are all position:absolute so they're unaffected */
+    display: flex;
+    align-items: center;
+    /* 1 design unit, locked to viewport height against a 1058u reference stage */
+    --hu: calc(100svh / 1058);
+    --hw: calc(100vw / 1487);
+    /* grows slightly on ultra-wide, never shrinks below the height-locked unit */
+    --hh: clamp(var(--hu), calc(var(--hu) * .65 + var(--hw) * .35), calc(var(--hu) * 1.16));
+  }
+
+  .hero-cinema__plate {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-cinema__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
+  }
+  /* Legibility scrim (dark under the type column, brand tint, bottom fade) —
+     same job as the reference's edge/bottom fades, tuned for a photo/video plate. */
+  .hero-cinema__plate::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, rgba(41, 82, 227, .28), transparent 55%),
+      linear-gradient(to right, rgba(5, 5, 5, .96) 0%, rgba(5, 5, 5, .82) 28%, rgba(5, 5, 5, .4) 48%, transparent 64%),
+      linear-gradient(to bottom, rgba(5, 5, 5, 0) 55%, rgba(5, 5, 5, .5) 78%, #050505 100%);
+  }
+
+  .hero-cinema__stage {
+    position: relative;
+    z-index: 1;
+    padding-left: calc(75 * var(--hu));
+    padding-right: calc(48 * var(--hu));
+    max-width: 44rem;
+    font-family: 'Manrope', var(--font-sans);
+  }
+
+  /* Notification-style tags, right side of the hero — pop in one by one as
+     the video scrubs (see initHeroScrub in main.js), never over the type column. */
+  .hero-cinema__notifs {
+    position: absolute;
+    z-index: 1;
+    right: calc(60 * var(--hu));
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: calc(18 * var(--hu));
+    pointer-events: none;
+  }
+  .hc-notif {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(12 * var(--hh));
+    padding: calc(15 * var(--hh)) calc(26 * var(--hh));
+    border-radius: 999px;
+    background: rgba(13, 20, 40, .55);
+    border: 1px solid rgba(111, 168, 255, .35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 28px -10px rgba(41, 82, 227, .5);
+    font-family: var(--font-mono);
+    font-size: calc(16.5 * var(--hh));
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #dce8ff;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(28px) scale(0.92);
+    transition: opacity .5s cubic-bezier(.22, 1, .36, 1), transform .5s cubic-bezier(.34, 1.4, .64, 1);
+  }
+  .hc-notif.is-visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  .hc-notif__icon {
+    width: calc(19 * var(--hh));
+    height: calc(19 * var(--hh));
+    flex-shrink: 0;
+    color: var(--color-lilac);
+  }
+  .hc-notif__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .hero-cinema__notifs { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hc-notif {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  .hc-headline {
+    font-weight: 500;
+    font-size: calc(58 * var(--hh));
+    line-height: calc(64 * var(--hh));
+    letter-spacing: calc(0.3 * var(--hh));
+    color: #fafafa;
+  }
+  .hc-headline span { display: block; }
+
+  .hc-sub {
+    margin-top: calc(26 * var(--hh));
+    max-width: 32rem;
+    font-size: calc(19 * var(--hh));
+    line-height: calc(27 * var(--hh));
+    color: #a7a6a6;
+  }
+  .hc-sub span { display: block; }
+
+  .hc-actions {
+    margin-top: calc(38 * var(--hh));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(20 * var(--hh));
+  }
+  .hc-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(50 * var(--hh));
+    padding: 0 calc(28 * var(--hh));
+    border-radius: 999px;
+    background: #fff;
+    color: #050505;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: transform .25s cubic-bezier(.22, 1, .36, 1), box-shadow .25s ease;
+  }
+  .hc-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -8px rgba(111, 168, 255, .5);
+  }
+  .hc-ghost {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    padding-bottom: 2px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .hc-ghost:hover {
+    color: var(--color-lilac);
+    border-color: var(--color-lilac);
+  }
+
+  /* Real project wordmarks stand in for the reference's placeholder partner strip */
+  .hero-cinema__logos {
+    position: absolute;
+    z-index: 1;
+    left: calc(75 * var(--hu));
+    right: calc(48 * var(--hu));
+    bottom: calc(48 * var(--hu));
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(20 * var(--hu)) calc(48 * var(--hu));
+  }
+  .hc-lg {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8b8a8a;
+    transition: color .2s ease;
+  }
+  .hc-lg:hover { color: #fafafa; }
+
+  @keyframes hcRise {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hc-rise {
+    opacity: 0;
+    animation: hcRise 0.9s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  @keyframes hcFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .hc-fade {
+    opacity: 0;
+    animation: hcFade 1.1s ease both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hc-rise, .hc-fade {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    /* No scroll-driven scrubbing: collapse back to a single-screen hero */
+    .hero-scrub { height: 100svh; }
+    .hero-cinema { position: relative; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-cinema__stage { padding-right: calc(24 * var(--hu)); }
+    /* Stays absolutely positioned (not flowed) so it still fits inside the
+       fixed-height sticky hero used for scroll-scrubbing — 2×2 grid per the
+       reference's phone layout instead of a single row. */
+    .hero-cinema__logos {
+      left: calc(24 * var(--hu));
+      right: calc(24 * var(--hu));
+      bottom: calc(28 * var(--hu));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: calc(14 * var(--hu)) calc(20 * var(--hu));
+    }
+  }
+
+  /* On-load entrance for above-the-fold content that isn't scroll-triggered
+     (case-study header/sidebar) — same cadence as the hero. */
+  .hero-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(22px);
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* ---- Site-wide scroll reveal ----
+     Same choreography on every section so scrolling reads as one
+     continuous sequence rather than separate blocks popping in. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .hero-line {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ---- Custom cursor ----
+     Dot + trailing ring in brand lilac; fine-pointer devices only (see JS gate). */
+  .cursor-dot, .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 100;
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-lilac);
+    transition: opacity 0.2s ease;
+  }
+  .cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(111, 168, 255, 0.5);
+    transition: transform 0.15s ease-out, opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .cursor-ring.is-active {
+    transform: scale(1.5);
+    border-color: var(--color-magenta);
+  }
+  body.has-custom-cursor .cursor-dot,
+  body.has-custom-cursor .cursor-ring {
+    opacity: 1;
+  }
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none;
   }
 
   .header-scrolled {
@@ -220,6 +540,17 @@
   from {
     opacity: 0;
     transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
   }
   to {
     opacity: 1;

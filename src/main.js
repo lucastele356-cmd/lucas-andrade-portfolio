@@ -52,25 +52,159 @@ if (projectFrames.length && 'IntersectionObserver' in window && !reducedMotionFo
   projectFrames.forEach((frame) => frame.classList.add('in-view'))
 }
 
-// ---- Subtle hero parallax (pointer devices, motion allowed) ----
-const heroFloat = document.getElementById('hero-float')
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-const hasFinePointer = window.matchMedia('(pointer: fine)').matches
+// ---- Hero video plays along with scroll (scroll-scrub), then dissolves ----
+const heroScrub = document.getElementById('hero-scrub')
+const heroCinema = document.getElementById('hero-cinema')
+const heroVideo = document.getElementById('hero-video')
+const reducedMotionForHero = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-if (heroFloat && !prefersReducedMotion && hasFinePointer) {
-  const cards = heroFloat.querySelectorAll(':scope > div')
-  heroFloat.addEventListener('mousemove', (e) => {
-    const rect = heroFloat.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    cards.forEach((card, i) => {
-      const strength = i === 0 ? 10 : 14
-      card.style.transform = `translate(${x * strength}px, ${y * strength}px) rotate(${i === 0 ? -4 : 5}deg)`
+if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
+  const notifEls = document.querySelectorAll('.hc-notif')
+
+  const armScrub = () => {
+    // iOS Safari only paints seeked frames after the video has actually played
+    // once — kick it off and immediately pause so scroll takes over from frame 0.
+    heroVideo.play().then(() => heroVideo.pause()).catch(() => {})
+
+    // Hero stays fully opaque through most of the scrub, then dissolves over
+    // the final stretch so it hands off to the next section instead of
+    // cutting away the instant the sticky pin releases.
+    const fadeStart = 0.72
+    let targetProgress = 0
+    let smoothProgress = 0
+    let chasing = false
+
+    // Seeking a compressed video is not instant. Two extra guards on top of
+    // the easing: never issue a new seek while the previous one is still
+    // being decoded (they'd queue up and stutter), and skip seeks too small
+    // to change the visible frame at the source's 24fps.
+    const frameDuration = 1 / 24
+    const seekTo = (p) => {
+      if (!heroVideo.duration || heroVideo.seeking) return
+      const target = p * heroVideo.duration
+      if (Math.abs(target - heroVideo.currentTime) < frameDuration) return
+      heroVideo.currentTime = target
+    }
+
+    const chase = () => {
+      const delta = targetProgress - smoothProgress
+      if (Math.abs(delta) < 0.0008) {
+        smoothProgress = targetProgress
+        seekTo(smoothProgress)
+        chasing = false
+        return
+      }
+      smoothProgress += delta * 0.22
+      seekTo(smoothProgress)
+      requestAnimationFrame(chase)
+    }
+
+    const onScroll = () => {
+      const rect = heroScrub.getBoundingClientRect()
+      const scrollable = rect.height - window.innerHeight
+      if (scrollable <= 0) return
+      targetProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1)
+
+      const fade = Math.min(Math.max((targetProgress - fadeStart) / (1 - fadeStart), 0), 1)
+      heroCinema.style.opacity = String(1 - fade)
+
+      // Notification tags pop in one by one as their scroll threshold is
+      // crossed, and hide again if the user scrolls back up past it.
+      notifEls.forEach((el) => {
+        const at = Number(el.dataset.notifAt) || 0
+        el.classList.toggle('is-visible', targetProgress >= at)
+      })
+
+      if (!chasing) {
+        chasing = true
+        requestAnimationFrame(chase)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+  }
+
+  if (heroVideo.readyState >= 1) {
+    armScrub()
+  } else {
+    heroVideo.addEventListener('loadedmetadata', armScrub, { once: true })
+  }
+}
+
+// ---- Subtle parallax depth on scroll (project thumbnails, section content) ----
+const parallaxEls = document.querySelectorAll('[data-parallax]')
+const reducedMotionForParallax = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+if (parallaxEls.length && !reducedMotionForParallax) {
+  let parallaxTicking = false
+
+  const updateParallax = () => {
+    const viewportCenter = window.innerHeight / 2
+    parallaxEls.forEach((el) => {
+      const speed = Number(el.dataset.parallax) || 0.08
+      const rect = el.getBoundingClientRect()
+      const elCenter = rect.top + rect.height / 2
+      const offset = Math.max(Math.min((viewportCenter - elCenter) * speed, 60), -60)
+      el.style.translate = `0 ${offset.toFixed(1)}px`
     })
-  })
-  heroFloat.addEventListener('mouseleave', () => {
-    cards.forEach((card, i) => {
-      card.style.transform = `rotate(${i === 0 ? -4 : 5}deg)`
-    })
-  })
+    parallaxTicking = false
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!parallaxTicking) {
+        requestAnimationFrame(updateParallax)
+        parallaxTicking = true
+      }
+    },
+    { passive: true }
+  )
+  updateParallax()
+}
+
+// ---- Animated stat counters (Sobre section) ----
+const counters = document.querySelectorAll('[data-counter]')
+
+if (counters.length) {
+  const reducedMotionForCounters = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const runCounter = (el) => {
+    const to = Number(el.dataset.counterTo || '0')
+    const suffix = el.dataset.counterSuffix || ''
+
+    if (reducedMotionForCounters) {
+      el.textContent = `${to}${suffix}`
+      return
+    }
+
+    const duration = 1200
+    const start = performance.now()
+
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      el.textContent = `${Math.round(to * eased)}${suffix}`
+      if (progress < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }
+
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCounter(entry.target)
+            counterObserver.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.6 }
+    )
+    counters.forEach((el) => counterObserver.observe(el))
+  } else {
+    counters.forEach(runCounter)
+  }
 }
