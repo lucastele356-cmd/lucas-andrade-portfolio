@@ -27,7 +27,7 @@ if (!projeto) {
 
   const cta = document.getElementById('case-cta')
   cta.href = projeto.ctaHref
-  cta.querySelector('span').textContent = projeto.ctaLabel
+  cta.querySelector('.case-cta__label').textContent = projeto.ctaLabel
   if (projeto.ctaHref.startsWith('http')) {
     cta.target = '_blank'
     cta.rel = 'noopener'
