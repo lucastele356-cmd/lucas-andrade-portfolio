@@ -394,6 +394,203 @@
     .hero-cinema { position: relative; }
   }
 
+  /* ---- Skills / habilidades ----
+     Left column stays sticky while the right column's cards pile up: each
+     .skill-card is itself position:sticky with a progressively larger
+     `top` offset (inline style, 24px steps), so as its .skill-wrap scrolls
+     past, the card pins in place and the next one slides over it — pure
+     CSS, no JS or IntersectionObserver needed. */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 1024px) {
+    .skills-grid {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .skills-info {
+      position: sticky;
+      top: 140px;
+    }
+  }
+
+  .skills-cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .skill-wrap {
+    height: 300px;
+  }
+  .skill-wrap--last {
+    height: auto;
+  }
+
+  .skill-card {
+    position: sticky;
+    display: flex;
+    gap: 20px;
+    padding: 28px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .04), 0 24px 48px -20px rgba(0, 0, 0, .18);
+  }
+  .dark .skill-card {
+    background: var(--color-ink-2);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04), 0 24px 48px -20px rgba(0, 0, 0, .5);
+  }
+
+  .skill-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .skill-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .skill-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .skill-body h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--color-ink);
+  }
+  .dark .skill-body h3 {
+    color: #fff;
+  }
+  .skill-body p {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #6b6b78;
+  }
+  .dark .skill-body p {
+    color: #a0a0b2;
+  }
+
+  .skill-bar {
+    position: relative;
+    margin-top: 20px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .08);
+  }
+  .dark .skill-bar {
+    background: rgba(255, 255, 255, .1);
+  }
+  .skill-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--color-magenta);
+  }
+  .skill-bar em {
+    position: absolute;
+    top: -22px;
+    translate: -50% 0;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #8a8a96;
+  }
+  .dark .skill-bar em {
+    color: #a0a0b2;
+  }
+
+  @media (max-width: 1023px) {
+    .skill-wrap { height: auto; }
+    .skill-card { position: relative; top: 0 !important; margin-bottom: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skill-wrap { height: auto; }
+    .skill-card { position: relative; top: 0 !important; margin-bottom: 20px; }
+  }
+
+  /* ---- Clients strip ----
+     Continuous CSS-only marquee (list rendered twice, track slides -50%
+     then loops) — no JS/library needed for four items. */
+  .clients-strip {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-ink);
+    border-block: 1px solid rgba(255, 255, 255, .1);
+    padding-block: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .clients-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: clientsMarquee 26s linear infinite;
+  }
+  @keyframes clientsMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  /* Margin (not track `gap`) so every card — including the last of each
+     half — carries the same trailing space; that's what makes the two
+     halves perfectly identical in width, so translateX(-50%) loops with
+     no jump at the seam. */
+  .client-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    margin-right: 72px;
+  }
+  .client-card__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--color-ink-2);
+  }
+  .client-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .client-card__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .client-card__handle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, .5);
+    white-space: nowrap;
+  }
+  .client-card__badge {
+    width: 16px;
+    height: 16px;
+    color: var(--color-brand);
+    flex-shrink: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .clients-track { animation: none; }
+  }
+
   @media (max-width: 640px) {
     .hero-cinema__stage { padding-right: calc(24 * var(--hu)); }
     /* Stays absolutely positioned (not flowed) so it still fits inside the
