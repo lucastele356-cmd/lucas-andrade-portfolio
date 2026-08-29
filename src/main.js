@@ -52,7 +52,7 @@ if (projectFrames.length && 'IntersectionObserver' in window && !reducedMotionFo
   projectFrames.forEach((frame) => frame.classList.add('in-view'))
 }
 
-// ---- Hero video plays along with scroll (scroll-scrub), then dissolves ----
+// ---- Hero video plays along with scroll (scroll-scrub) ----
 const heroScrub = document.getElementById('hero-scrub')
 const heroCinema = document.getElementById('hero-cinema')
 const heroVideo = document.getElementById('hero-video')
@@ -69,11 +69,9 @@ if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
     // once — kick it off and immediately pause so scroll takes over from frame 0.
     heroVideo.play().then(() => heroVideo.pause()).catch(() => {})
 
-    // Hero stays fully opaque through most of the scrub, then dissolves over
-    // the final stretch so it hands off to the next section instead of
-    // cutting away the instant the sticky pin releases. Kept short so the
-    // fade itself doesn't feel like a slow drag.
-    const fadeStart = 0.9
+    // No opacity fade-out: the hero stays sticky (and fully visible) for the
+    // whole scrub range, so the next section slides up and covers it
+    // directly once .hero-scrub runs out — no dark gap in between.
     let targetProgress = 0
     let smoothProgress = 0
     let chasing = false
@@ -108,9 +106,6 @@ if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
       const scrollable = rect.height - window.innerHeight
       if (scrollable <= 0) return
       targetProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1)
-
-      const fade = Math.min(Math.max((targetProgress - fadeStart) / (1 - fadeStart), 0), 1)
-      heroCinema.style.opacity = String(1 - fade)
 
       // Each element pops in once its scroll threshold is crossed, and
       // hides again if the user scrolls back up past it.

@@ -4,21 +4,25 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-display: "Clash Display", "General Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "General Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  /* Voltline design system — see MEU SITE/readme.md. Space Grotesk stands in
+     for Neue Montreal (licensed, no free binary) as the brief's own
+     alternative; Inter also covers the --font-mono role since Voltline sets
+     its labels in uppercase tracked Inter, not a literal monospace face. */
+  --font-display: "Space Grotesk", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Brand ramp — pulled from the hero portrait's tones (deep navy -> electric blue -> icy cyan) */
-  --color-brand-ink: #14224f;
-  --color-brand: #2952e3;
-  --color-lilac: #6fa8ff;
-  --color-lilac-soft: #cfe3ff;
-  --color-magenta: #5fd4ff;
+  /* Brand ramp — Voltline tokens/colors.css (blue-500/400/600 + lime-400) */
+  --color-brand-ink: #0003c7;
+  --color-brand: #0004ff;
+  --color-lilac: #052fff;
+  --color-lilac-soft: #7e92ff;
+  --color-magenta: #c1fb00;
 
   /* Neutral surfaces — registered as theme colors so opacity modifiers (bg-ink/75) work */
-  --color-ink: #070a12;
-  --color-ink-2: #0d1424;
-  --color-mist: #f0f4fb;
+  --color-ink: #000000;
+  --color-ink-2: #08080c;
+  --color-mist: #fff5f5;
 }
 
 @layer base {
@@ -53,15 +57,18 @@
     color: transparent;
   }
 
-  /* Chamfered corners — the mark's stepped-fold language, used instead of border-radius */
+  /* Voltline shape language: pills on anything small/interactive, 24px on
+     cards and photo frames — replaces the old cut-corner "chamfer" motif.
+     Kept the original class names so every existing usage picks this up
+     without touching each element. */
   .chamfer-tr {
-    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    border-radius: 999px;
   }
   .chamfer-tr-lg {
-    clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+    border-radius: 24px;
   }
   .chamfer-bl {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+    border-radius: 24px;
   }
 
   .glow-lilac {
@@ -116,7 +123,6 @@
     overflow: hidden;
     height: 100svh;
     background: #050505;
-    will-change: opacity;
     /* vertically centers .hero-cinema__stage; no justify-content, so it stays
        at the left (flex-start default) — the other children (plate, notifs,
        logos) are all position:absolute so they're unaffected */
@@ -241,13 +247,22 @@
   }
 
   .hc-headline {
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-weight: 400;
     font-size: calc(58 * var(--hh));
     line-height: calc(64 * var(--hh));
-    letter-spacing: calc(0.3 * var(--hh));
+    letter-spacing: -0.015em;
     color: #fafafa;
   }
-  .hc-headline span { display: block; }
+  .hc-headline__accent {
+    background-image: linear-gradient(100deg, var(--color-lilac-soft) 10%, #ffffff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Direct children only — the two line spans — so the nested accent span
+     stays inline inside its line instead of also becoming a block. */
+  .hc-headline > span { display: block; }
 
   .hc-sub {
     margin-top: calc(26 * var(--hh));
@@ -319,6 +334,35 @@
     transition: color .2s ease;
   }
   .hc-lg:hover { color: #fafafa; }
+
+  /* Scroll cue — small mouse outline with a dot that drops and fades,
+     looping. Sits above the project strip, centered, brand blue. */
+  .hero-cinema__scrolldown {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: calc(112 * var(--hu));
+    transform: translateX(-50%);
+    color: #ffffff;
+    opacity: 0.75;
+    pointer-events: none;
+  }
+  @keyframes hcScrollDot {
+    0% { opacity: 0; transform: translateY(0); }
+    35% { opacity: 1; }
+    80% { opacity: 0; transform: translateY(11px); }
+    100% { opacity: 0; transform: translateY(11px); }
+  }
+  .hc-scrolldown__dot {
+    transform-origin: center;
+    animation: hcScrollDot 1.7s cubic-bezier(.4, 0, .2, 1) infinite;
+  }
+  @media (max-width: 640px) {
+    .hero-cinema__scrolldown { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hc-scrolldown__dot { animation: none; opacity: 0.7; }
+  }
 
   @keyframes hcFade {
     from { opacity: 0; }
@@ -433,7 +477,7 @@
   .filter-btn {
     @apply px-4 py-2 text-[11px] uppercase tracking-[0.1em] border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors;
     font-family: var(--font-mono);
-    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+    border-radius: 999px;
   }
   .filter-btn:hover {
     @apply border-brand dark:border-lilac text-brand dark:text-lilac;
@@ -508,7 +552,7 @@
 
   .case-slide {
     @apply overflow-hidden shadow-2xl shadow-black/10 dark:shadow-black/50;
-    clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+    border-radius: 24px;
   }
   .case-slide img {
     @apply w-full block;
