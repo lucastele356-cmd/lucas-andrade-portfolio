@@ -812,18 +812,6 @@
     -webkit-backdrop-filter: blur(16px) saturate(140%);
   }
 
-  .filter-btn {
-    @apply px-4 py-2 text-[11px] uppercase tracking-[0.1em] border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors;
-    font-family: var(--font-mono);
-    border-radius: 999px;
-  }
-  .filter-btn:hover {
-    @apply border-brand dark:border-lilac text-brand dark:text-lilac;
-  }
-  .filter-btn.is-active {
-    @apply border-brand dark:border-lilac text-brand dark:text-lilac bg-brand/5 dark:bg-lilac/10;
-  }
-
   .nav-mobile-link {
     @apply py-1 hover:text-brand dark:hover:text-lilac transition-colors;
   }

@@ -2,35 +2,6 @@ import { initLayout } from './layout.js'
 
 initLayout()
 
-// ---- Project filter ----
-const filterButtons = document.querySelectorAll('.filter-btn')
-const projectCards = document.querySelectorAll('.project-card')
-
-filterButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach((b) => b.classList.remove('is-active'))
-    btn.classList.add('is-active')
-    const filter = btn.dataset.filter
-
-    projectCards.forEach((card) => {
-      const match = filter === 'todos' || card.dataset.category === filter
-      if (match) {
-        card.hidden = false
-        requestAnimationFrame(() => {
-          card.style.opacity = '1'
-          card.style.transform = 'translateY(0)'
-        })
-      } else {
-        card.style.opacity = '0'
-        card.style.transform = 'translateY(8px)'
-        setTimeout(() => {
-          if (card.style.opacity === '0') card.hidden = true
-        }, 350)
-      }
-    })
-  })
-})
-
 // ---- Project thumbnails scale up as they enter the viewport ----
 const projectFrames = document.querySelectorAll('.project-card-frame')
 const reducedMotionForFrames = window.matchMedia('(prefers-reduced-motion: reduce)').matches
