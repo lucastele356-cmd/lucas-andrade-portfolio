@@ -400,21 +400,86 @@
     .hero-cinema { position: relative; }
   }
 
-  /* ---- Sobre: blue-duotone photo treatment ---- */
-  .sobre-photo {
+  /* ---- Glass card ----
+     CSS approximation of Figma's "Glass" effect (Luz -45°/80%, Refração 80,
+     Profundidade 87, Dispersão 65, Gelo 19, Splay 88): low frost (19) means
+     mostly transparent, so a faint fill + strong backdrop-blur stands in for
+     refraction/depth; the diagonal highlight follows the -45° light; the
+     inset dual-tone edge stands in for the dispersion/chromatic fringe. */
+  .glass-card {
     position: relative;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, .18);
+    overflow: hidden;
   }
-  .sobre-photo img {
-    filter: grayscale(1) contrast(1.05);
-  }
-  .sobre-photo::after {
+  .glass-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: 1;
-    background: var(--color-brand);
-    mix-blend-mode: color;
+    background: linear-gradient(-45deg, rgba(255, 255, 255, .3) 0%, rgba(255, 255, 255, 0) 38%);
     pointer-events: none;
+  }
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 1px 1px 0 rgba(126, 146, 255, .3), inset -1px -1px 0 rgba(255, 120, 180, .18);
+    pointer-events: none;
+  }
+  .glass-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Sobre: full-bleed background photo ----
+     Matches the Figma reference: the photo is one continuous frame (no
+     separate boxed portrait) — dark under the headline on the left, then
+     opens up into the photo's own blue tone for the rest, with no extra
+     darkening needed behind the bio/cards on the right. */
+  .sobre-bg__img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .sobre-bg__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0) 40%),
+      linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 82%, rgba(0, 0, 0, .3) 100%);
+  }
+  @media (max-width: 1023px) {
+    /* Columns stack on mobile/tablet — no side-by-side gap to frame, so a
+       flat dark scrim keeps the stacked text readable over the photo. */
+    .sobre-bg__scrim {
+      background: rgba(0, 0, 0, .82);
+    }
+  }
+
+  /* Soft vertical glow bloom behind the bio/cards column — matches the
+     ambient light capsule in the Figma reference. */
+  .sobre-bg__glow {
+    position: absolute;
+    z-index: 0;
+    top: 12%;
+    right: 12%;
+    width: 140px;
+    height: 65%;
+    border-radius: 999px;
+    background: radial-gradient(closest-side, rgba(126, 146, 255, .35), transparent 70%);
+    filter: blur(40px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  @media (max-width: 1023px) {
+    .sobre-bg__glow { display: none; }
   }
 
   /* ---- Skills / habilidades ----
