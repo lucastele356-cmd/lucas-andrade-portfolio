@@ -30,7 +30,7 @@
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
-    <div class="px-6 lg:px-10 h-20 flex items-center justify-between">
+    <div class="px-6 lg:px-10 h-14 sm:h-16 lg:h-20 flex items-center justify-between">
       <a href="#top" class="flex items-center" aria-label="Lucas Andrade Design — início">
         <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-5 sm:h-6 w-auto invert dark:invert-0" />
       </a>
@@ -75,7 +75,7 @@
     <div class="hero-scrub" id="hero-scrub">
     <section class="hero-cinema" id="hero-cinema">
       <div class="hero-cinema__plate" aria-hidden="true">
-        <canvas class="hero-cinema__video" id="hero-frames" width="960" height="540"></canvas>
+        <canvas class="hero-cinema__video" id="hero-frames" width="960" height="1707"></canvas>
         <div class="hero-cinema__tint" aria-hidden="true"></div>
       </div>
 
@@ -117,7 +117,7 @@
           <span class="hc-scrub-rise" data-hc-at="0.2">Construo sistemas visuais pra marcas que precisam ser lembradas.</span>
         </p>
         <div class="hc-actions hc-scrub-rise" data-hc-at="0.26">
-          <a href="#projetos" class="btn-shine inline-flex items-center justify-center px-7 h-[50px] text-white font-mono-brand text-xs uppercase tracking-[0.08em]">Ver projetos</a>
+          <a href="#projetos" class="btn-shine inline-flex items-center justify-center px-5 sm:px-7 h-10 sm:h-[50px] text-white font-mono-brand text-[11px] sm:text-xs uppercase tracking-[0.08em]">Ver projetos</a>
           <a href="#contato" class="hc-ghost">Falar comigo</a>
         </div>
       </div>
@@ -129,14 +129,6 @@
           <rect x="1.5" y="1.5" width="21" height="35" rx="10.5" stroke="currentColor" stroke-width="1.6" />
           <circle class="hc-scrolldown__dot" cx="12" cy="11" r="2.1" fill="currentColor" />
         </svg>
-      </div>
-
-      <!-- real projects stand in for the reference's placeholder partner strip -->
-      <div class="hero-cinema__logos" aria-label="Projetos selecionados">
-        <a href="/projeto.html?slug=tp" class="hc-lg hc-fade" style="animation-delay:.5s">TP Consultoria</a>
-        <a href="/projeto.html?slug=anthony" class="hc-lg hc-fade" style="animation-delay:.56s">Anthony Carbert</a>
-        <a href="/projeto.html?slug=solve" class="hc-lg hc-fade" style="animation-delay:.62s">Solve Scale</a>
-        <a href="/projeto.html?slug=informada" class="hc-lg hc-fade" style="animation-delay:.68s">Instituto Informada</a>
       </div>
     </section>
     </div>
@@ -150,16 +142,14 @@
       <div class="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-10">
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
           <!-- Col 1: eyebrow + heading -->
-          <div class="lg:col-span-4 lg:self-center" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center gap-2">
+          <div class="lg:col-span-4 lg:self-center text-center lg:text-left" data-reveal>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center justify-center lg:justify-start gap-2">
               <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
               Sobre mim
             </p>
             <h2 class="font-display font-normal text-4xl lg:text-7xl leading-tight lg:whitespace-nowrap">
-              <span class="text-white">Direção de</span><br />
-              <span class="text-white">marca</span><br />
-              <span class="text-gray-500">com peso</span><br />
-              <span class="text-gray-500">conceitual.</span>
+              <span class="text-white">Direção de <br class="hidden lg:block" />marca</span><br />
+              <span class="text-gray-500">com peso <br class="hidden lg:block" />conceitual.</span>
             </h2>
           </div>
 
@@ -168,7 +158,7 @@
 
           <!-- Col 3: icons + bio + stats + cards -->
           <div class="lg:col-span-4 flex flex-col" data-reveal data-parallax="0.03">
-            <div class="flex items-center justify-end gap-5 text-gray-400 mb-8">
+            <div class="order-last mt-8 mb-0 lg:order-none lg:mt-0 lg:mb-8 flex flex-row items-center justify-center lg:justify-end gap-5 text-gray-400">
               <a href="#top" aria-label="Início">
                 <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
                   <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
@@ -184,7 +174,7 @@
               </a>
             </div>
 
-            <p class="font-light text-lg text-gray-300 leading-relaxed text-right">
+            <p class="font-light text-lg text-gray-300 leading-relaxed text-left lg:text-right">
               Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço.
               <strong class="block mt-3 text-white font-light">Não entrego só uma logo: entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.</strong>
             </p>
@@ -200,7 +190,7 @@
 
             <div class="mt-auto pt-10 grid sm:grid-cols-2 gap-5">
               <!-- Card 1: dark stat -->
-              <div class="glass-card chamfer-tr-lg p-7 flex flex-col justify-between min-h-[240px]">
+              <div class="order-last lg:order-none glass-card chamfer-tr-lg p-7 flex flex-col justify-between min-h-[240px]">
                 <div>
                   <p class="font-display font-light text-5xl text-white" data-counter data-counter-to="300" data-counter-suffix="+">0</p>
                   <p class="mt-2 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">Projetos entregues</p>
@@ -249,12 +239,6 @@
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=tp" class="group block">
             <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
-                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
-                </span>
-                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
-              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">TP Consultoria</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Consultoria de benefícios</p>
             </div>
@@ -268,12 +252,6 @@
         <article data-category="musica" class="project-card">
           <a href="/projeto.html?slug=anthony" class="group block">
             <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
-                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
-                </span>
-                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
-              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Anthony Carbert</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Artista musical</p>
             </div>
@@ -289,12 +267,6 @@
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=solve" class="group block">
             <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
-                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
-                </span>
-                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
-              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Solve Scale</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Marketing empresarial</p>
             </div>
@@ -308,12 +280,6 @@
         <article data-category="institucional" class="project-card">
           <a href="/projeto.html?slug=informada" class="group block">
             <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
-                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
-                </span>
-                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
-              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Instituto Escola Informada</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Instituto de proteção infantil</p>
             </div>
@@ -326,10 +292,6 @@
         <!-- Ver mais projetos -->
         <a href="https://www.instagram.com/olucasnacria?igsi=bzhhOWVvbjI2Ympr" target="_blank" rel="noopener" class="group block">
           <div class="px-6 lg:px-10 invisible" aria-hidden="true">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em]">{ Identidade Visual }</span>
-              <span class="font-mono-brand text-[11px]">2026</span>
-            </div>
             <h3 class="font-display font-normal text-3xl sm:text-4xl">Ver mais projetos</h3>
             <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em]">Identidade visual · Portfólio completo</p>
           </div>
@@ -833,13 +795,7 @@
         <p class="mt-6 text-lg text-gray-300 max-w-xl mx-auto" data-reveal>
           Se sua marca precisa de mais do que um retoque visual, bora conversar sobre o sistema certo pra ela.
         </p>
-        <div class="mt-7 flex justify-center" data-reveal>
-          <span class="inline-flex items-center gap-2 h-6 px-2.5 rounded-full font-mono-brand text-[10px] uppercase tracking-[0.1em]" style="background: rgba(193,251,0,.12); color: #C1FB00; border: 1px solid rgba(193,251,0,.35);">
-            <span class="h-1.5 w-1.5 rounded-full" style="background: #C1FB00; box-shadow: 0 0 12px rgba(193,251,0,.6);" aria-hidden="true"></span>
-            Aberto pra novos projetos
-          </span>
-        </div>
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-4" data-reveal>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-4" data-reveal>
           <a href="https://wa.me/5561995259902" target="_blank" rel="noopener" class="btn-shine inline-flex items-center px-7 py-3.5 text-white font-mono-brand text-xs uppercase tracking-[0.1em]">
             Chamar no WhatsApp
           </a>
