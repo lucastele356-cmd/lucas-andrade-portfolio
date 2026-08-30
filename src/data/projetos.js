@@ -13,22 +13,22 @@ export const projetos = {
     blocos: [
       {
         tipo: 'texto',
-        html: 'TP Consultoria é uma consultoria premium de gestão de benefícios de saúde, criada para redefinir a relação entre empresário e plano de saúde no Brasil. O projeto pedia um <strong>sistema de marca</strong> que sustentasse esse nível de sofisticação em qualquer ponto de contato — da sede física ao patrocínio de um carro de corrida.',
+        html: 'TP Consultoria é uma consultoria premium de gestão de benefícios de saúde, criada para redefinir a relação entre empresário e plano de saúde no Brasil. O projeto pedia um <strong>sistema de marca</strong> que sustentasse esse nível de sofisticação em qualquer ponto de contato: da sede física ao patrocínio de um carro de corrida.',
       },
       { tipo: 'imagem', src: '/projetos/tp/capa.png', alt: 'Capa da identidade visual TP Consultoria' },
       {
         tipo: 'texto',
-        html: '<strong>Identidade &amp; sistema gráfico</strong> — o monograma nasceu do encontro entre um T e um P, aplicado sobre uma paleta em azul profundo e gradientes que reforçam a atmosfera premium da marca em qualquer superfície.',
+        html: '<strong>Identidade &amp; sistema gráfico</strong>: o monograma nasceu do encontro entre um T e um P, aplicado sobre uma paleta em azul profundo e gradientes que reforçam a atmosfera premium da marca em qualquer superfície.',
       },
       { tipo: 'imagem', src: '/projetos/tp/papelaria.png', alt: 'Papelaria da TP Consultoria' },
       {
         tipo: 'texto',
-        html: '<strong>Sede &amp; aplicações físicas</strong> — a marca ganhou vida na sede da TP, aplicada em paredes, mobiliário e sinalização, provando que o sistema funciona fora da tela, não só no papel.',
+        html: '<strong>Sede &amp; aplicações físicas</strong>: a marca ganhou vida na sede da TP, aplicada em paredes, mobiliário e sinalização, provando que o sistema funciona fora da tela, não só no papel.',
       },
       { tipo: 'imagem', src: '/projetos/tp/sede.png', alt: 'Sede física da TP Consultoria com identidade aplicada' },
       {
         tipo: 'texto',
-        html: '<strong>Produto &amp; patrocínio</strong> — do ícone do aplicativo ao patrocínio de um carro de corrida, o sistema visual da TP se manteve coerente em qualquer escala.',
+        html: '<strong>Produto &amp; patrocínio</strong>: do ícone do aplicativo ao patrocínio de um carro de corrida, o sistema visual da TP se manteve coerente em qualquer escala.',
       },
       { tipo: 'imagem', src: '/projetos/tp/app.png', alt: 'Aplicativo TP Consultoria' },
       { tipo: 'imagem', src: '/projetos/tp/carro.png', alt: 'Patrocínio de carro de corrida TP Consultoria' },
@@ -48,22 +48,22 @@ export const projetos = {
     blocos: [
       {
         tipo: 'texto',
-        html: 'Anthony Carbert precisava de uma identidade que carregasse calor humano sem perder solidez de palco. O resultado foi um <strong>monograma que funde uma mão aberta e um coração</strong> — o gesto e o sentimento como uma única forma.',
+        html: 'Anthony Carbert precisava de uma identidade que carregasse calor humano sem perder solidez de palco. O resultado foi um <strong>monograma que funde uma mão aberta e um coração</strong>: o gesto e o sentimento como uma única forma.',
       },
       { tipo: 'imagem', src: '/projetos/anthony/capa.png', alt: 'Patch bordado com o monograma de Anthony Carbert' },
       {
         tipo: 'texto',
-        html: '<strong>Sistema de marca</strong> — paleta em terracota, preto e off-white, com três variações de logo (lockup horizontal, versão empilhada e selo circular), cada uma pensada para um contexto de aplicação diferente.',
+        html: '<strong>Sistema de marca</strong>: paleta em terracota, preto e off-white, com três variações de logo (lockup horizontal, versão empilhada e selo circular), cada uma pensada para um contexto de aplicação diferente.',
       },
       { tipo: 'imagem', src: '/projetos/anthony/sistema.png', alt: 'Sistema de logo e paleta de cores de Anthony Carbert' },
       {
         tipo: 'texto',
-        html: '<strong>Merch &amp; materiais físicos</strong> — boné, moletom e camiseta carregam o monograma bordado como assinatura, reforçando a identidade em cada peça que o público veste.',
+        html: '<strong>Merch &amp; materiais físicos</strong>: boné, moletom e camiseta carregam o monograma bordado como assinatura, reforçando a identidade em cada peça que o público veste.',
       },
       { tipo: 'imagem', src: '/projetos/anthony/apparel.png', alt: 'Boné e moletom com a identidade de Anthony Carbert' },
       {
         tipo: 'texto',
-        html: '<strong>Materiais de palco</strong> — correia de instrumento, palhetas e capuz de show levam a marca para dentro da performance, onde a identidade precisa aguentar luz, suor e movimento sem perder força.',
+        html: '<strong>Materiais de palco</strong>: correia de instrumento, palhetas e capuz de show levam a marca para dentro da performance, onde a identidade precisa aguentar luz, suor e movimento sem perder força.',
       },
       { tipo: 'imagem', src: '/projetos/anthony/palco.png', alt: 'Materiais de palco com a identidade de Anthony Carbert' },
     ],
@@ -87,17 +87,17 @@ export const projetos = {
       { tipo: 'imagem', src: '/projetos/solve/capa.webp', alt: 'Símbolo da Solve Scale em azul elétrico' },
       {
         tipo: 'texto',
-        html: 'O nome nasce de uma escolha direta: <strong>Solve</strong>, porque resolver é o que a marca faz. <strong>Scale</strong>, porque essa é a dor real de todo negócio que a Solve Scale atende — crescer não é o problema, escalar é. O símbolo materializa essa ideia literalmente: um check que ocupa o lugar do "V" em "sol‑V‑e", transformando a própria palavra no gesto de resolver.',
+        html: 'O nome nasce de uma escolha direta: <strong>Solve</strong>, porque resolver é o que a marca faz. <strong>Scale</strong>, porque essa é a dor real de todo negócio que a Solve Scale atende: crescer não é o problema, escalar é. O símbolo materializa essa ideia literalmente: um check que ocupa o lugar do "V" em "sol‑V‑e", transformando a própria palavra no gesto de resolver.',
       },
       { tipo: 'imagem', src: '/projetos/solve/mockup.webp', alt: 'Sistema de marca da Solve Scale aplicado em cartões e mockup de app' },
       {
         tipo: 'texto',
-        html: 'O azul é o fio condutor da identidade Solve — do mais profundo ao mais elétrico, ele representa a jornada entre estratégia e execução: confiança, tecnologia e clareza de raciocínio. O preto absoluto ancora a marca com sobriedade e autoridade, enquanto o branco gelado garante respiro e legibilidade. Juntas, essas cores comunicam uma promessa simples: <strong>método que gera resultado</strong>.',
+        html: 'O azul é o fio condutor da identidade Solve: do mais profundo ao mais elétrico, ele representa a jornada entre estratégia e execução: confiança, tecnologia e clareza de raciocínio. O preto absoluto ancora a marca com sobriedade e autoridade, enquanto o branco gelado garante respiro e legibilidade. Juntas, essas cores comunicam uma promessa simples: <strong>método que gera resultado</strong>.',
       },
       { tipo: 'imagem', src: '/projetos/solve/cores.webp', alt: 'Paleta de cores da Solve Scale aplicada sobre o símbolo' },
       {
         tipo: 'texto',
-        html: '<strong>Aplicações</strong> — do site ao papel timbrado, passando pelo moletom bordado, pela garrafa e pela fachada, o sistema Solve Scale se mantém como assinatura em cada ponto de contato da marca.',
+        html: '<strong>Aplicações</strong>: do site ao papel timbrado, passando pelo moletom bordado, pela garrafa e pela fachada, o sistema Solve Scale se mantém como assinatura em cada ponto de contato da marca.',
       },
       { tipo: 'imagem', src: '/projetos/solve/digital.webp', alt: 'Site e aplicativo da Solve Scale em laptop e celular' },
       { tipo: 'imagem', src: '/projetos/solve/papelaria.webp', alt: 'Papelaria da Solve Scale: cartões, envelopes e pastas' },
@@ -127,25 +127,25 @@ export const projetos = {
     blocos: [
       {
         tipo: 'texto',
-        html: 'A missão central do Instituto Escola Informada é simples, mas poderosa: <strong>"a informação que protege"</strong>. Fundado pelas doutoras Ana Jakeline e Adriane Nobre, o Instituto trabalha com uma abordagem preventiva e de instrumentalização, oferecendo capacitação prática para toda a rede escolar — professores, profissionais da escola, pais e alunos. Não é apenas identificar abuso, mas evitar que situações ocorram através da informação prévia e do conhecimento.',
+        html: 'A missão central do Instituto Escola Informada é simples, mas poderosa: <strong>"a informação que protege"</strong>. Fundado pelas doutoras Ana Jakeline e Adriane Nobre, o Instituto trabalha com uma abordagem preventiva e de instrumentalização, oferecendo capacitação prática para toda a rede escolar: professores, profissionais da escola, pais e alunos. Não é apenas identificar abuso, mas evitar que situações ocorram através da informação prévia e do conhecimento.',
       },
       { tipo: 'imagem', src: '/projetos/informada/capa.webp', alt: 'Pulseiras com a identidade do Instituto Escola Informada' },
       { tipo: 'imagem', src: '/projetos/informada/fundadoras.webp', alt: 'Dra. Ana Jakeline e Dra. Adriane Nobre, fundadoras do Instituto Escola Informada' },
       {
         tipo: 'texto',
-        html: '<strong>Identidade visual</strong> — o símbolo nasce de uma flor, referência ao florescimento e ao cuidado, aplicada em variações de azul, laranja e branco sobre uma tipografia arredondada e acolhedora, que aproxima uma pauta difícil de crianças, famílias e educadores.',
+        html: '<strong>Identidade visual</strong>: o símbolo nasce de uma flor, referência ao florescimento e ao cuidado, aplicada em variações de azul, laranja e branco sobre uma tipografia arredondada e acolhedora, que aproxima uma pauta difícil de crianças, famílias e educadores.',
       },
       { tipo: 'imagem', src: '/projetos/informada/universo-visual.webp', alt: 'Universo visual do Instituto Escola Informada: variações do símbolo em flor' },
       {
         tipo: 'texto',
-        html: '<strong>Papelaria &amp; identificação</strong> — crachás, livros e itens de papelaria carregam o sistema para o dia a dia da equipe e das capacitações oferecidas pelo Instituto.',
+        html: '<strong>Papelaria &amp; identificação</strong>: crachás, livros e itens de papelaria carregam o sistema para o dia a dia da equipe e das capacitações oferecidas pelo Instituto.',
       },
       { tipo: 'imagem', src: '/projetos/informada/crachas.webp', alt: 'Crachás e cordão do Instituto Escola Informada' },
       { tipo: 'imagem', src: '/projetos/informada/papelaria.webp', alt: 'Livros e canetas do Instituto Escola Informada' },
       { tipo: 'imagem', src: '/projetos/informada/uniformes.webp', alt: 'Camisas polo com a identidade do Instituto Escola Informada' },
       {
         tipo: 'texto',
-        html: '<strong>Campanha de conscientização</strong> — a marca também assina uma campanha voltada para escolas, com outdoor, banners e mobiliário urbano levando a pergunta central do projeto para fora dos muros da instituição: "Sua escola está preparada para o que as crianças não conseguem dizer?"',
+        html: '<strong>Campanha de conscientização</strong>: a marca também assina uma campanha voltada para escolas, com outdoor, banners e mobiliário urbano levando a pergunta central do projeto para fora dos muros da instituição: "Sua escola está preparada para o que as crianças não conseguem dizer?"',
       },
       { tipo: 'imagem', src: '/projetos/informada/outdoor.webp', alt: 'Outdoor da campanha do Instituto Escola Informada' },
       { tipo: 'imagem', src: '/projetos/informada/banners.webp', alt: 'Banner e anúncio em ponto de ônibus da campanha do Instituto Escola Informada' },

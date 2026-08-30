@@ -80,9 +80,7 @@
     <div class="hero-scrub" id="hero-scrub">
     <section class="hero-cinema" id="hero-cinema">
       <div class="hero-cinema__plate" aria-hidden="true">
-        <video class="hero-cinema__video" id="hero-video" muted playsinline preload="auto">
-          <source src="/hero/lucas-video.mp4" type="video/mp4" />
-        </video>
+        <canvas class="hero-cinema__video" id="hero-frames" width="960" height="540"></canvas>
         <div class="hero-cinema__tint" aria-hidden="true"></div>
       </div>
 
@@ -149,45 +147,80 @@
     </div>
 
     <!-- ============ SOBRE ============ -->
-    <section id="sobre" class="relative py-24 lg:py-32 border-t border-black/5 dark:border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10" data-reveal-group>
-        <div class="lg:col-span-4" data-reveal data-parallax="0.06">
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Sobre</p>
-          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
-            Direção de marca com peso conceitual.
-          </h2>
+    <section id="sobre" class="relative py-24 lg:py-32 bg-ink overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex items-center justify-between mb-6" data-reveal>
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-lilac" aria-hidden="true"></span>
+            Sobre mim
+          </p>
+          <div class="hidden sm:flex items-center gap-5 text-gray-400">
+            <a href="#top" aria-label="Início">
+              <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
+                <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+                <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+                <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-lilac transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-lilac transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.46-2.2 3v5.8h-4V9Z"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="lg:col-span-7 lg:col-start-6" data-reveal data-parallax="0.03">
-          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço. Não entrego só uma logo, entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.
-          </p>
-          <p class="mt-5 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Atendo marcas, agências e empreendedores que já entenderam que identidade visual é decisão de negócio, não enfeite.
-          </p>
 
-          <dl class="mt-12 grid grid-cols-3 gap-6 max-w-md">
-            <div class="flex flex-col gap-3 pb-4 border-b border-black/10 dark:border-white/10">
-              <dt class="font-display font-light text-3xl text-ink dark:text-white" data-counter data-counter-to="8" data-counter-suffix="+">0</dt>
-              <dd class="flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#C1FB00]" aria-hidden="true"></span>
-                Anos de atuação
-              </dd>
+        <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight mb-10 lg:mb-14" data-reveal>
+          <span class="text-white">Direção de marca</span><br />
+          <span class="text-gray-500">com peso conceitual.</span>
+        </h2>
+
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
+          <!-- Left: portrait -->
+          <div class="lg:col-span-5" data-reveal data-parallax="0.06">
+            <div class="sobre-photo chamfer-tr-lg overflow-hidden aspect-[3/4]">
+              <img src="/sobre/lucas.jpg" alt="Lucas Andrade" class="h-full w-full object-cover" loading="lazy" />
             </div>
-            <div class="flex flex-col gap-3 pb-4 border-b border-black/10 dark:border-white/10">
-              <dt class="font-display font-light text-3xl text-ink dark:text-white" data-counter data-counter-to="4">0</dt>
-              <dd class="flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#C1FB00]" aria-hidden="true"></span>
-                Frentes de design
-              </dd>
+          </div>
+
+          <!-- Right: bio + stats + cards -->
+          <div class="lg:col-span-7 flex flex-col" data-reveal data-parallax="0.03">
+            <p class="font-light text-lg text-gray-300 leading-relaxed text-right">
+              Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço.
+              <strong class="block mt-3 text-white font-light">Não entrego só uma logo: entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.</strong>
+            </p>
+
+            <div class="mt-8 flex items-center gap-4">
+              <span class="grid place-items-center h-11 w-11 rounded-xl bg-white/5 border border-white/10 text-lilac flex-shrink-0">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2 3 9l9 13 9-13-9-7Z"/><path d="M3 9h18M8 9l4 13 4-13"/></svg>
+              </span>
+              <p class="font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-300 leading-relaxed">
+                8+ Anos de atuação<br />4 Frentes de design
+              </p>
             </div>
-            <div class="flex flex-col gap-3 pb-4 border-b border-black/10 dark:border-white/10">
-              <dt class="font-display font-light text-3xl text-ink dark:text-white" data-counter data-counter-to="100" data-counter-suffix="%">0</dt>
-              <dd class="flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#C1FB00]" aria-hidden="true"></span>
-                Sistema, não peça avulsa
-              </dd>
+
+            <div class="mt-10 grid sm:grid-cols-2 gap-5">
+              <!-- Card 1: dark stat -->
+              <div class="chamfer-tr-lg bg-ink-2 border border-white/10 p-7 flex flex-col justify-between min-h-[240px]">
+                <div>
+                  <p class="font-display font-light text-5xl text-white" data-counter data-counter-to="300" data-counter-suffix="+">0</p>
+                  <p class="mt-2 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">Projetos entregues</p>
+                </div>
+                <a href="#contato" class="btn-shine mt-8 inline-flex items-center justify-center px-5 py-3 text-white font-mono-brand text-xs uppercase tracking-[0.1em]">Fale comigo</a>
+              </div>
+
+              <!-- Card 2: image stat -->
+              <div class="relative chamfer-tr-lg overflow-hidden min-h-[240px]">
+                <img src="/projetos/tp/capa.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
+                <div class="relative z-10 h-full flex flex-col justify-between p-7">
+                  <p class="font-light text-xs text-gray-200 max-w-[180px] leading-relaxed">Clientes atendidos com identidade visual e sistemas completos.</p>
+                  <p class="font-display font-light text-5xl text-white" data-counter data-counter-to="20" data-counter-suffix="+">0</p>
+                </div>
+              </div>
             </div>
-          </dl>
+          </div>
         </div>
       </div>
     </section>
@@ -210,11 +243,13 @@
             <button type="button" data-filter="institucional" class="filter-btn">Institucional</button>
           </div>
         </div>
+      </div>
 
-        <div id="project-grid" class="grid sm:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-16 lg:gap-y-20">
-          <!-- Case 1: TP Consultoria -->
-          <article data-category="corporativo" class="project-card">
-            <a href="/projeto.html?slug=tp" class="group block">
+      <div id="project-grid" class="grid sm:grid-cols-2 gap-x-6 lg:gap-x-10 gap-y-16 lg:gap-y-20 px-6 lg:px-10">
+        <!-- Case 1: TP Consultoria -->
+        <article data-category="corporativo" class="project-card">
+          <a href="/projeto.html?slug=tp" class="group block">
+            <div class="px-6 lg:px-10">
               <div class="flex items-center gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
@@ -223,15 +258,17 @@
               </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">TP Consultoria</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Consultoria de benefícios</p>
-              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden" data-parallax="0.05">
-                <img src="/projetos/tp/capa.png" alt="TP Consultoria" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
-              </div>
-            </a>
-          </article>
+            </div>
+            <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
+              <img src="/projetos/tp/capa.png" alt="TP Consultoria" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+            </div>
+          </a>
+        </article>
 
-          <!-- Case 2: Anthony Carbert -->
-          <article data-category="musica" class="project-card">
-            <a href="/projeto.html?slug=anthony" class="group block">
+        <!-- Case 2: Anthony Carbert -->
+        <article data-category="musica" class="project-card">
+          <a href="/projeto.html?slug=anthony" class="group block">
+            <div class="px-6 lg:px-10">
               <div class="flex items-center gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
@@ -240,15 +277,19 @@
               </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Anthony Carbert</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Artista musical</p>
-              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden" data-parallax="0.05">
-                <img src="/projetos/anthony/capa.png" alt="Anthony Carbert" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
-              </div>
-            </a>
-          </article>
+            </div>
+            <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
+              <img src="/projetos/anthony/capa.png" alt="Anthony Carbert" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+            </div>
+          </a>
+        </article>
+      </div>
 
-          <!-- Case 3: Solve Scale -->
-          <article data-category="corporativo" class="project-card">
-            <a href="/projeto.html?slug=solve" class="group block">
+      <div class="grid sm:grid-cols-3 gap-x-6 lg:gap-x-10 gap-y-16 px-6 lg:px-10 mt-16 lg:mt-20">
+        <!-- Case 3: Solve Scale -->
+        <article data-category="corporativo" class="project-card">
+          <a href="/projeto.html?slug=solve" class="group block">
+            <div class="px-6 lg:px-10">
               <div class="flex items-center gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
@@ -257,15 +298,17 @@
               </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Solve Scale</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Marketing empresarial</p>
-              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden" data-parallax="0.05">
-                <img src="/projetos/solve/capa.webp" alt="Solve Scale" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
-              </div>
-            </a>
-          </article>
+            </div>
+            <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
+              <img src="/projetos/solve/capa.webp" alt="Solve Scale" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+            </div>
+          </a>
+        </article>
 
-          <!-- Case 4: Instituto Escola Informada -->
-          <article data-category="institucional" class="project-card">
-            <a href="/projeto.html?slug=informada" class="group block">
+        <!-- Case 4: Instituto Escola Informada -->
+        <article data-category="institucional" class="project-card">
+          <a href="/projeto.html?slug=informada" class="group block">
+            <div class="px-6 lg:px-10">
               <div class="flex items-center gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
@@ -274,20 +317,30 @@
               </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Instituto Escola Informada</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Instituto de proteção infantil</p>
-              <div class="project-card-frame aspect-[16/11] chamfer-tr-lg overflow-hidden" data-parallax="0.05">
-                <img src="/projetos/informada/capa.webp" alt="Instituto Escola Informada" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
-              </div>
-            </a>
-          </article>
+            </div>
+            <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
+              <img src="/projetos/informada/capa.webp" alt="Instituto Escola Informada" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+            </div>
+          </a>
+        </article>
 
-          <!-- Ver mais projetos -->
-          <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="project-card-frame chamfer-tr-lg aspect-[16/11] flex items-center justify-center gap-3 bg-brand dark:bg-lilac text-white dark:text-ink hover:brightness-110 transition-[filter]">
+        <!-- Ver mais projetos -->
+        <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="group block">
+          <div class="px-6 lg:px-10 invisible" aria-hidden="true">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em]">{ Identidade Visual }</span>
+              <span class="font-mono-brand text-[11px]">2026</span>
+            </div>
+            <h3 class="font-display font-normal text-3xl sm:text-4xl">Ver mais projetos</h3>
+            <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em]">Identidade visual · Portfólio completo</p>
+          </div>
+          <div class="btn-shine project-card-frame aspect-[16/11] flex items-center justify-center gap-3 bg-ink text-white">
             <span class="font-mono-brand text-sm uppercase tracking-[0.1em]">Ver mais projetos</span>
             <span class="grid place-items-center h-9 w-9 rounded-full bg-white/15">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
             </span>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -297,7 +350,7 @@
         <div class="skills-grid">
           <div class="skills-info" data-reveal>
             <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4 flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-[#C1FB00]" aria-hidden="true"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-brand dark:bg-lilac" aria-hidden="true"></span>
               Ferramentas &amp; habilidades
             </p>
             <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-sm">
@@ -306,62 +359,59 @@
           </div>
 
           <div class="skills-cards">
-            <div class="skill-wrap">
-              <div class="skill-card" style="top: 140px;">
-                <div class="skill-icon" style="background:#a259ff">
-                  <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="3" fill="#0ACF83"/><circle cx="12" cy="18" r="3" fill="#A259FF"/><path d="M9 6a3 3 0 1 0 0 6h3V6H9Z" fill="#F24E1E"/><path d="M9 12a3 3 0 1 0 3 3v-3H9Z" fill="#1ABCFE"/><path d="M15 3a3 3 0 1 1 0 6h-3V3h3Z" fill="#FF7262"/></svg>
-                </div>
-                <div class="skill-body">
-                  <h3>Figma</h3>
-                  <p>Onde o conceito visual vira layout — prototipagem e handoff de interfaces e social media.</p>
-                  <div class="skill-bar"><span style="width:80%"></span><em style="left:80%">80%</em></div>
-                </div>
+            <div class="skill-card" style="top: 140px; z-index: 1;">
+              <div class="skill-icon skill-icon--logo">
+                <img src="/skills/figma.png" alt="" />
+              </div>
+              <div class="skill-body">
+                <h3>Figma</h3>
+                <p>Onde o conceito visual vira layout: prototipagem e handoff de interfaces e social media.</p>
+                <div class="skill-bar" data-target="80"><span></span><em style="left:80%" data-counter data-counter-to="80" data-counter-suffix="%">0%</em></div>
               </div>
             </div>
+            <div class="skill-spacer"></div>
 
-            <div class="skill-wrap">
-              <div class="skill-card" style="top: 140px;">
-                <div class="skill-icon" style="background:#92003b">El</div>
-                <div class="skill-body">
-                  <h3>WordPress / Elementor</h3>
-                  <p>Pra projetos que pedem um site institucional pronto pra crescer sem depender de código.</p>
-                  <div class="skill-bar"><span style="width:80%"></span><em style="left:80%">80%</em></div>
-                </div>
+            <div class="skill-card" style="top: 140px; z-index: 2;">
+              <div class="skill-icon skill-icon--logo">
+                <img src="/skills/wordpress.png" alt="" />
+              </div>
+              <div class="skill-body">
+                <h3>WordPress / Elementor</h3>
+                <p>Pra projetos que pedem um site institucional pronto pra crescer sem depender de código.</p>
+                <div class="skill-bar" data-target="60"><span></span><em style="left:60%" data-counter data-counter-to="60" data-counter-suffix="%">0%</em></div>
               </div>
             </div>
+            <div class="skill-spacer"></div>
 
-            <div class="skill-wrap">
-              <div class="skill-card" style="top: 140px;">
-                <div class="skill-icon" style="background:#001e36; color:#31a8ff">Ps</div>
-                <div class="skill-body">
-                  <h3>Photoshop</h3>
-                  <p>Retoque, composição e tratamento de imagem — a base de qualquer entrega visual.</p>
-                  <div class="skill-bar"><span style="width:90%"></span><em style="left:90%">90%</em></div>
-                </div>
+            <div class="skill-card" style="top: 140px; z-index: 3;">
+              <div class="skill-icon" style="background:#001e36; color:#31a8ff">Ps</div>
+              <div class="skill-body">
+                <h3>Photoshop</h3>
+                <p>Retoque, composição e tratamento de imagem: a base de qualquer entrega visual.</p>
+                <div class="skill-bar" data-target="90"><span></span><em style="left:90%" data-counter data-counter-to="90" data-counter-suffix="%">0%</em></div>
               </div>
             </div>
+            <div class="skill-spacer"></div>
 
-            <div class="skill-wrap">
-              <div class="skill-card" style="top: 140px;">
-                <div class="skill-icon" style="background:#330000; color:#ff9a00">Ai</div>
-                <div class="skill-body">
-                  <h3>Illustrator</h3>
-                  <p>Onde a identidade visual nasce: logotipos, ícones e sistemas gráficos vetoriais.</p>
-                  <div class="skill-bar"><span style="width:90%"></span><em style="left:90%">90%</em></div>
-                </div>
+            <div class="skill-card" style="top: 140px; z-index: 4;">
+              <div class="skill-icon" style="background:#330000; color:#ff9a00">Ai</div>
+              <div class="skill-body">
+                <h3>Illustrator</h3>
+                <p>Onde a identidade visual nasce: logotipos, ícones e sistemas gráficos vetoriais.</p>
+                <div class="skill-bar" data-target="90"><span></span><em style="left:90%" data-counter data-counter-to="90" data-counter-suffix="%">0%</em></div>
               </div>
             </div>
+            <div class="skill-spacer"></div>
 
-            <div class="skill-wrap skill-wrap--last">
-              <div class="skill-card" style="top: 140px;">
-                <div class="skill-icon" style="background:#00005b; color:#9999ff">Ae</div>
-                <div class="skill-body">
-                  <h3>After Effects</h3>
-                  <p>Motion design e animação de marca — dar vida ao sistema visual em vídeo.</p>
-                  <div class="skill-bar"><span style="width:70%"></span><em style="left:70%">70%</em></div>
-                </div>
+            <div class="skill-card" style="top: 140px; z-index: 5;">
+              <div class="skill-icon" style="background:#00005b; color:#9999ff">Ae</div>
+              <div class="skill-body">
+                <h3>After Effects</h3>
+                <p>Motion design e animação de marca: dar vida ao sistema visual em vídeo.</p>
+                <div class="skill-bar" data-target="70"><span></span><em style="left:70%" data-counter data-counter-to="70" data-counter-suffix="%">0%</em></div>
               </div>
             </div>
+            <div class="skill-spacer skill-spacer--last"></div>
           </div>
         </div>
       </div>
@@ -372,77 +422,85 @@
       <div class="clients-track">
         <!-- real set -->
         <a href="/projeto.html?slug=tp" class="client-card">
-          <img src="/projetos/tp/capa.png" alt="" class="client-card__avatar" />
+          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">TP Consultoria</span>
             <span class="client-card__handle">@tpconsultoriasselect
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=anthony" class="client-card">
-          <img src="/projetos/anthony/capa.png" alt="" class="client-card__avatar" />
+          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Anthony Carbert</span>
             <span class="client-card__handle">@anthonycarbert
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=solve" class="client-card">
-          <img src="/projetos/solve/capa.webp" alt="" class="client-card__avatar" />
+          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Solve Scale</span>
             <span class="client-card__handle">@solve.scale
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=informada" class="client-card">
-          <img src="/projetos/informada/capa.webp" alt="" class="client-card__avatar" />
+          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Instituto Informada</span>
             <span class="client-card__handle">@escola.informada
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" />
         </a>
         <!-- duplicate set, hidden from AT, closes the loop seamlessly -->
         <a href="/projeto.html?slug=tp" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/projetos/tp/capa.png" alt="" class="client-card__avatar" />
+          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">TP Consultoria</span>
             <span class="client-card__handle">@tpconsultoriasselect
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=anthony" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/projetos/anthony/capa.png" alt="" class="client-card__avatar" />
+          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Anthony Carbert</span>
             <span class="client-card__handle">@anthonycarbert
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=solve" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/projetos/solve/capa.webp" alt="" class="client-card__avatar" />
+          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Solve Scale</span>
             <span class="client-card__handle">@solve.scale
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" />
         </a>
         <a href="/projeto.html?slug=informada" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/projetos/informada/capa.webp" alt="" class="client-card__avatar" />
+          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" />
           <span class="client-card__meta">
             <span class="client-card__name">Instituto Informada</span>
             <span class="client-card__handle">@escola.informada
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
+          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" />
         </a>
       </div>
     </section>
@@ -457,11 +515,11 @@
 
         <div class="grid md:grid-cols-3 gap-6" data-reveal-group>
           <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
-            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou — da parede da sede ao carro de corrida."</p>
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Equipe TP Consultoria</footer>
           </blockquote>
           <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.08">
-            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom — e continua parecendo eu."</p>
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Anthony Carbert</footer>
           </blockquote>
           <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
@@ -474,7 +532,6 @@
 
     <!-- ============ CONTATO ============ -->
     <section id="contato" class="relative py-28 lg:py-36 bg-ink overflow-hidden">
-      <div class="ribbon h-[380px] w-[560px] -bottom-32 left-1/2 -translate-x-1/2 opacity-50" style="clip-path: polygon(15% 0, 100% 20%, 85% 100%, 0 75%);"></div>
       <div class="relative max-w-3xl mx-auto px-6 text-center" data-reveal-group>
         <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-5" data-reveal>Contato</p>
         <h2 class="font-display font-normal text-4xl sm:text-6xl leading-tight text-white" data-reveal data-parallax="0.05">
@@ -537,7 +594,7 @@
             <span class="text-gray-600">Redes</span>
             <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">Instagram</a>
             <a href="#" class="hover:text-lilac transition-colors">Behance</a>
-            <a href="#" class="hover:text-lilac transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">LinkedIn</a>
           </div>
         </nav>
       </div>

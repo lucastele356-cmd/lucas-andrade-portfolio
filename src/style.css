@@ -394,12 +394,34 @@
     .hero-cinema { position: relative; }
   }
 
+  /* ---- Sobre: blue-duotone photo treatment ---- */
+  .sobre-photo {
+    position: relative;
+  }
+  .sobre-photo img {
+    filter: grayscale(1) contrast(1.05);
+  }
+  .sobre-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--color-brand);
+    mix-blend-mode: color;
+    pointer-events: none;
+  }
+
   /* ---- Skills / habilidades ----
-     Left column stays sticky while the right column's cards pile up: each
-     .skill-card is itself position:sticky with a progressively larger
-     `top` offset (inline style, 24px steps), so as its .skill-wrap scrolls
-     past, the card pins in place and the next one slides over it — pure
-     CSS, no JS or IntersectionObserver needed. */
+     Left column stays sticky while the right column's cards pile up.
+     All .skill-card elements are direct children of the SAME .skills-cards
+     container (their shared sticky containing block) — that's what makes
+     each one stay pinned at top:140 permanently once stuck, instead of
+     unsticking and sliding away once its own little box scrolls past.
+     .skill-spacer elements between them just add extra flow height so the
+     next card's natural position (and thus when it starts sticking) is
+     pushed further down — that gap is the "dwell time" each card gets
+     before the next one covers it. z-index (inline, DOM order) guarantees
+     later cards always paint over earlier ones. Pure CSS, no JS needed. */
   .skills-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -407,7 +429,7 @@
   }
   @media (min-width: 1024px) {
     .skills-grid {
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.6fr);
       gap: 64px;
       align-items: start;
     }
@@ -418,28 +440,32 @@
   }
 
   .skills-cards {
-    display: flex;
-    flex-direction: column;
+    position: relative;
   }
-  .skill-wrap {
-    height: 300px;
+  .skill-spacer {
+    height: 50px;
   }
-  .skill-wrap--last {
-    height: auto;
+  .skill-spacer--last {
+    height: 50px;
   }
 
   .skill-card {
     position: sticky;
     display: flex;
-    gap: 20px;
-    padding: 28px;
-    border-radius: 24px;
+    align-items: center;
+    gap: 32px;
+    width: 604px;
+    max-width: 100%;
+    height: 219px;
+    box-sizing: border-box;
+    padding: 36px 40px;
+    border-radius: 20px;
     background: #fff;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .04), 0 24px 48px -20px rgba(0, 0, 0, .18);
+    box-shadow: 0 20px 60px -28px rgba(0, 0, 0, .12);
   }
   .dark .skill-card {
-    background: var(--color-ink-2);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04), 0 24px 48px -20px rgba(0, 0, 0, .5);
+    background: #18181f;
+    box-shadow: 0 20px 60px -24px rgba(0, 0, 0, .35);
   }
 
   .skill-icon {
@@ -458,6 +484,14 @@
     width: 30px;
     height: 30px;
   }
+  .skill-icon--logo {
+    background: none;
+  }
+  .skill-icon--logo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
 
   .skill-body {
     flex: 1;
@@ -473,7 +507,7 @@
     color: #fff;
   }
   .skill-body p {
-    margin-top: 6px;
+    margin-top: 12px;
     font-size: 0.875rem;
     line-height: 1.5;
     color: #6b6b78;
@@ -484,7 +518,7 @@
 
   .skill-bar {
     position: relative;
-    margin-top: 20px;
+    margin-top: 28px;
     height: 6px;
     border-radius: 999px;
     background: rgba(0, 0, 0, .08);
@@ -495,8 +529,13 @@
   .skill-bar span {
     display: block;
     height: 100%;
+    width: 0%;
     border-radius: 999px;
-    background: var(--color-magenta);
+    background: var(--color-lilac);
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skill-bar span { transition: none; }
   }
   .skill-bar em {
     position: absolute;
@@ -511,13 +550,9 @@
     color: #a0a0b2;
   }
 
-  @media (max-width: 1023px) {
-    .skill-wrap { height: auto; }
-    .skill-card { position: relative; top: 0 !important; margin-bottom: 20px; }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .skill-wrap { height: auto; }
-    .skill-card { position: relative; top: 0 !important; margin-bottom: 20px; }
+    .skill-spacer { display: none; }
+    .skill-card { position: relative; top: 0 !important; margin-bottom: 12px; }
   }
 
   /* ---- Clients strip ----
@@ -560,6 +595,17 @@
     object-fit: cover;
     flex-shrink: 0;
     background: var(--color-ink-2);
+  }
+  /* Brand mark, after the name/@handle — sized by height so wide
+     wordmarks stay legible instead of being squeezed into a square. */
+  .client-card__logo {
+    flex-shrink: 0;
+    height: 64px;
+    width: auto;
+    max-width: 140px;
+    margin-left: 84px;
+    object-fit: contain;
+    object-position: left center;
   }
   .client-card__meta {
     display: flex;
@@ -659,11 +705,10 @@
     width: 32px;
     height: 32px;
     border: 1px solid rgba(111, 168, 255, 0.5);
-    transition: transform 0.15s ease-out, opacity 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.15s ease-out, opacity 0.2s ease;
   }
   .cursor-ring.is-active {
     transform: scale(1.5);
-    border-color: var(--color-magenta);
   }
   body.has-custom-cursor .cursor-dot,
   body.has-custom-cursor .cursor-ring {
@@ -703,6 +748,7 @@
 
   /* Project thumbnails grow into place as they enter the viewport on scroll */
   .project-card-frame {
+    border-radius: 8px;
     transform: scale(0.86);
     opacity: 0.75;
     transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
@@ -784,11 +830,11 @@
     z-index: 0;
   }
   .blur-1 { width: 260px; height: 260px; top: -90px; left: 2%;  background: var(--color-brand);      opacity: 0.35; }
-  .blur-2 { width: 180px; height: 180px; top: 10px;   left: 20%; background: var(--color-magenta);    opacity: 0.22; }
+  .blur-2 { width: 180px; height: 180px; top: 10px;   left: 20%; background: var(--color-lilac-soft); opacity: 0.22; }
   .blur-3 { width: 320px; height: 320px; top: -140px; left: 38%; background: var(--color-lilac);      opacity: 0.28; }
   .blur-4 { width: 200px; height: 200px; bottom: -70px; left: 55%; background: var(--color-brand-ink); opacity: 0.35; }
   .blur-5 { width: 240px; height: 240px; top: -60px;  right: 16%; background: var(--color-lilac-soft); opacity: 0.18; }
-  .blur-6 { width: 160px; height: 160px; bottom: 0;   right: 6%;  background: var(--color-magenta);    opacity: 0.25; }
+  .blur-6 { width: 160px; height: 160px; bottom: 0;   right: 6%;  background: var(--color-brand-ink);  opacity: 0.25; }
   .blur-7 { width: 280px; height: 280px; bottom: -120px; right: -70px; background: var(--color-brand); opacity: 0.3; }
   .blur-8 { width: 140px; height: 140px; top: 40%;    left: 68%;  background: var(--color-lilac);      opacity: 0.2; }
 }

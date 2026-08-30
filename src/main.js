@@ -52,82 +52,84 @@ if (projectFrames.length && 'IntersectionObserver' in window && !reducedMotionFo
   projectFrames.forEach((frame) => frame.classList.add('in-view'))
 }
 
-// ---- Hero video plays along with scroll (scroll-scrub) ----
+// ---- Hero plays along with scroll (scroll-scrub) ----
+// Pre-rendered JPEG sequence drawn to a canvas, instead of seeking a <video> —
+// seeking a compressed video has to decode from the nearest keyframe, which
+// stutters on scroll; picking an already-decoded frame out of memory doesn't.
 const heroScrub = document.getElementById('hero-scrub')
 const heroCinema = document.getElementById('hero-cinema')
-const heroVideo = document.getElementById('hero-video')
+const heroCanvas = document.getElementById('hero-frames')
 const reducedMotionForHero = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-if (heroScrub && heroCinema && heroVideo && !reducedMotionForHero) {
-  // Headline/sub/actions (.hc-scrub-rise) and the notification tags (.hc-notif)
-  // share one scroll-threshold reveal: headline rises top-to-bottom first
-  // (thresholds 0.02–0.26), then the tags pop in after (0.34–0.58).
-  const scrubRevealEls = document.querySelectorAll('[data-hc-at]')
+if (heroScrub && heroCinema && heroCanvas) {
+  const FRAME_COUNT = 48
+  const ctx = heroCanvas.getContext('2d')
+  const frames = new Array(FRAME_COUNT)
+  let drawnIndex = -1
 
-  const armScrub = () => {
-    // iOS Safari only paints seeked frames after the video has actually played
-    // once — kick it off and immediately pause so scroll takes over from frame 0.
-    heroVideo.play().then(() => heroVideo.pause()).catch(() => {})
+  const drawFrame = (index) => {
+    const img = frames[index]
+    if (!img || !img.complete || index === drawnIndex) return
+    drawnIndex = index
+    ctx.drawImage(img, 0, 0, heroCanvas.width, heroCanvas.height)
+  }
+
+  const loadFrame = (i) => {
+    if (frames[i]) return frames[i]
+    const img = new Image()
+    img.src = `/hero/frames/f${String(i).padStart(3, '0')}.jpg`
+    frames[i] = img
+    return img
+  }
+
+  // Always show a static first frame, even under reduced motion — a <canvas>
+  // paints nothing on its own (unlike the <video> this replaced, which showed
+  // its poster frame for free).
+  const firstFrame = loadFrame(0)
+  firstFrame.onload = () => drawFrame(0)
+
+  if (!reducedMotionForHero) {
+    for (let i = 1; i < FRAME_COUNT; i++) loadFrame(i)
+
+    // Headline/sub/actions (.hc-scrub-rise) and the notification tags (.hc-notif)
+    // share one scroll-threshold reveal: headline rises top-to-bottom first
+    // (thresholds 0.02–0.26), then the tags pop in after (0.34–0.58).
+    const scrubRevealEls = document.querySelectorAll('[data-hc-at]')
 
     // No opacity fade-out: the hero stays sticky (and fully visible) for the
     // whole scrub range, so the next section slides up and covers it
     // directly once .hero-scrub runs out — no dark gap in between.
-    let targetProgress = 0
-    let smoothProgress = 0
-    let chasing = false
-
-    // Seeking a compressed video is not instant. Two extra guards on top of
-    // the easing: never issue a new seek while the previous one is still
-    // being decoded (they'd queue up and stutter), and skip seeks too small
-    // to change the visible frame at the source's 24fps.
-    const frameDuration = 1 / 24
-    const seekTo = (p) => {
-      if (!heroVideo.duration || heroVideo.seeking) return
-      const target = p * heroVideo.duration
-      if (Math.abs(target - heroVideo.currentTime) < frameDuration) return
-      heroVideo.currentTime = target
-    }
-
-    const chase = () => {
-      const delta = targetProgress - smoothProgress
-      if (Math.abs(delta) < 0.0008) {
-        smoothProgress = targetProgress
-        seekTo(smoothProgress)
-        chasing = false
-        return
-      }
-      smoothProgress += delta * 0.22
-      seekTo(smoothProgress)
-      requestAnimationFrame(chase)
-    }
+    let ticking = false
 
     const onScroll = () => {
       const rect = heroScrub.getBoundingClientRect()
       const scrollable = rect.height - window.innerHeight
       if (scrollable <= 0) return
-      targetProgress = Math.min(Math.max(-rect.top / scrollable, 0), 1)
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1)
+
+      drawFrame(Math.round(progress * (FRAME_COUNT - 1)))
 
       // Each element pops in once its scroll threshold is crossed, and
       // hides again if the user scrolls back up past it.
       scrubRevealEls.forEach((el) => {
         const at = Number(el.dataset.hcAt) || 0
-        el.classList.toggle('is-visible', targetProgress >= at)
+        el.classList.toggle('is-visible', progress >= at)
       })
 
-      if (!chasing) {
-        chasing = true
-        requestAnimationFrame(chase)
-      }
+      ticking = false
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true
+          requestAnimationFrame(onScroll)
+        }
+      },
+      { passive: true }
+    )
     onScroll()
-  }
-
-  if (heroVideo.readyState >= 1) {
-    armScrub()
-  } else {
-    heroVideo.addEventListener('loadedmetadata', armScrub, { once: true })
   }
 }
 
@@ -205,5 +207,32 @@ if (counters.length) {
     counters.forEach((el) => counterObserver.observe(el))
   } else {
     counters.forEach(runCounter)
+  }
+}
+
+// ---- Skill bars fill in as their card enters the viewport ----
+const skillBars = document.querySelectorAll('.skill-bar[data-target]')
+
+if (skillBars.length) {
+  const fillBar = (el) => {
+    const fill = el.querySelector('span')
+    if (fill) fill.style.width = `${el.dataset.target}%`
+  }
+
+  if ('IntersectionObserver' in window) {
+    const skillBarObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            fillBar(entry.target)
+            skillBarObserver.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.6 }
+    )
+    skillBars.forEach((el) => skillBarObserver.observe(el))
+  } else {
+    skillBars.forEach(fillBar)
   }
 }
