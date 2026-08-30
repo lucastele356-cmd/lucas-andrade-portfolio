@@ -153,14 +153,13 @@
       <div class="sobre-bg__glow" aria-hidden="true"></div>
 
       <div class="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-10">
-        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-6 flex items-center gap-2" data-reveal>
-          <span class="h-1.5 w-1.5 rounded-full bg-lilac" aria-hidden="true"></span>
-          Sobre mim
-        </p>
-
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
-          <!-- Col 1: heading -->
+          <!-- Col 1: eyebrow + heading -->
           <div class="lg:col-span-4 lg:self-center" data-reveal>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center gap-2">
+              <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+              Sobre mim
+            </p>
             <h2 class="font-display font-normal text-4xl lg:text-7xl leading-tight lg:whitespace-nowrap">
               <span class="text-white">Direção de</span><br />
               <span class="text-white">marca</span><br />
@@ -240,7 +239,10 @@
     <section id="projetos" class="relative py-24 lg:py-32 bg-white dark:bg-ink-2 border-t border-black/5 dark:border-white/10">
       <div class="px-6 lg:px-10">
         <div class="mx-auto max-w-2xl text-center mb-14" data-reveal>
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Projetos selecionados</p>
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center justify-center gap-2">
+            <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+            Projetos selecionados
+          </p>
           <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
             Cases que constroem sistema, não só imagem.
           </h2>
@@ -351,8 +353,8 @@
       <div class="max-w-7xl mx-auto px-6 lg:px-10">
         <div class="skills-grid">
           <div class="skills-info" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4 flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-brand dark:bg-lilac" aria-hidden="true"></span>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center gap-2">
+              <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
               Ferramentas &amp; habilidades
             </p>
             <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-sm">
@@ -511,33 +513,325 @@
     <section id="depoimentos" class="relative py-24 lg:py-32 bg-mist dark:bg-ink border-t border-black/5 dark:border-white/10">
       <div class="px-6 lg:px-10">
         <div class="mx-auto max-w-2xl text-center mb-14" data-reveal>
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Depoimentos</p>
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center justify-center gap-2">
+            <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+            Depoimentos
+          </p>
           <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
             O que dizem sobre trabalhar comigo.
           </h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6" data-reveal-group>
-          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
-            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Equipe TP Consultoria</footer>
-          </blockquote>
-          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.08">
-            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Anthony Carbert</footer>
-          </blockquote>
-          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
-            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Cliente, consultoria de benefícios</footer>
-          </blockquote>
-        </div>
+      </div>
+
+      <div class="testi-strip">
+        <div class="testi-track">
+          <!-- real set (repeated so one half is always wider than any viewport, so the -50% loop never runs out of content) -->
+          <article class="testi-card">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- repeat, hidden from AT -->
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- repeat, hidden from AT -->
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- duplicate half, hidden from AT, closes the loop seamlessly -->
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <div class="testi-card__author">
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Equipe TP Consultoria</span>
+                <span class="testi-card__handle">@tpconsultoriasselect</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <div class="testi-card__author">
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Anthony Carbert</span>
+                <span class="testi-card__handle">@anthonycarbert</span>
+              </span>
+            </div>
+          </article>
+          <article class="testi-card" aria-hidden="true">
+            <div class="testi-card__top">
+              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
+              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
+                <span class="testi-card__score">5.0/5</span>★★★★★
+              </span>
+            </div>
+            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <div class="testi-card__author">
+              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
+              <span class="testi-card__meta">
+                <span class="testi-card__name">Cliente</span>
+                <span class="testi-card__handle">Consultoria de benefícios</span>
+              </span>
+            </div>
+          </article>
+                </div>
       </div>
     </section>
 
     <!-- ============ CONTATO ============ -->
     <section id="contato" class="relative py-28 lg:py-36 bg-ink overflow-hidden">
       <div class="relative max-w-3xl mx-auto px-6 text-center" data-reveal-group>
-        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-5" data-reveal>Contato</p>
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-5 flex items-center justify-center gap-2" data-reveal>
+          <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+          Contato
+        </p>
         <h2 class="font-display font-normal text-4xl sm:text-6xl leading-tight text-white" data-reveal data-parallax="0.05">
           Vamos construir algo com direção.
         </h2>
