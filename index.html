@@ -30,7 +30,7 @@
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <div class="px-6 lg:px-10 h-20 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3 text-ink dark:text-white" aria-label="Lucas Andrade Design — início">
         <svg viewBox="0 0 96.16 96.15" class="h-6 w-6 sm:h-8 sm:w-8 text-[#2952E3] dark:text-white" fill="currentColor" aria-hidden="true">
           <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
@@ -148,44 +148,46 @@
 
     <!-- ============ SOBRE ============ -->
     <section id="sobre" class="relative py-24 lg:py-32 bg-ink overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-        <div class="flex items-center justify-between mb-6" data-reveal>
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-lilac" aria-hidden="true"></span>
-            Sobre mim
-          </p>
-          <div class="hidden sm:flex items-center gap-5 text-gray-400">
-            <a href="#top" aria-label="Início">
-              <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
-                <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
-                <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
-                <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-lilac transition-colors">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-lilac transition-colors">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.46-2.2 3v5.8h-4V9Z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight mb-10 lg:mb-14" data-reveal>
-          <span class="text-white">Direção de marca</span><br />
-          <span class="text-gray-500">com peso conceitual.</span>
-        </h2>
+      <div class="px-6 lg:px-10">
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-6 flex items-center gap-2" data-reveal>
+          <span class="h-1.5 w-1.5 rounded-full bg-lilac" aria-hidden="true"></span>
+          Sobre mim
+        </p>
 
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
-          <!-- Left: portrait -->
-          <div class="lg:col-span-5" data-reveal data-parallax="0.06">
-            <div class="sobre-photo chamfer-tr-lg overflow-hidden aspect-[3/4]">
+          <!-- Col 1: heading -->
+          <div class="lg:col-span-4 lg:self-center" data-reveal>
+            <h2 class="font-display font-normal text-5xl lg:text-6xl leading-tight whitespace-nowrap">
+              <span class="text-white">Direção de marca</span><br />
+              <span class="text-gray-500">com peso conceitual.</span>
+            </h2>
+          </div>
+
+          <!-- Col 2: portrait -->
+          <div class="lg:col-span-3 lg:self-center" data-reveal data-parallax="0.06">
+            <div class="sobre-photo glow-lilac-sm chamfer-tr-lg overflow-hidden aspect-[3/4] max-w-sm mx-auto">
               <img src="/sobre/lucas.jpg" alt="Lucas Andrade" class="h-full w-full object-cover" loading="lazy" />
             </div>
           </div>
 
-          <!-- Right: bio + stats + cards -->
-          <div class="lg:col-span-7 flex flex-col" data-reveal data-parallax="0.03">
+          <!-- Col 3: icons + bio + stats + cards -->
+          <div class="lg:col-span-5 flex flex-col" data-reveal data-parallax="0.03">
+            <div class="hidden sm:flex items-center justify-end gap-5 text-gray-400 mb-8">
+              <a href="#top" aria-label="Início">
+                <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
+                  <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+                  <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+                  <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-lilac transition-colors">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-lilac transition-colors">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.46-2.2 3v5.8h-4V9Z"/></svg>
+              </a>
+            </div>
+
             <p class="font-light text-lg text-gray-300 leading-relaxed text-right">
               Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço.
               <strong class="block mt-3 text-white font-light">Não entrego só uma logo: entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.</strong>
@@ -200,7 +202,7 @@
               </p>
             </div>
 
-            <div class="mt-10 grid sm:grid-cols-2 gap-5">
+            <div class="mt-auto pt-10 grid sm:grid-cols-2 gap-5">
               <!-- Card 1: dark stat -->
               <div class="chamfer-tr-lg bg-ink-2 border border-white/10 p-7 flex flex-col justify-between min-h-[240px]">
                 <div>
@@ -227,16 +229,16 @@
 
     <!-- ============ PROJETOS ============ -->
     <section id="projetos" class="relative py-24 lg:py-32 bg-white dark:bg-ink-2 border-t border-black/5 dark:border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14" data-reveal>
-          <div>
+      <div class="px-6 lg:px-10">
+        <div class="flex flex-col items-center text-center gap-8 mb-14" data-reveal>
+          <div class="mx-auto max-w-2xl">
             <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Projetos selecionados</p>
-            <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-lg">
+            <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
               Cases que constroem sistema, não só imagem.
             </h2>
           </div>
 
-          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos por área">
+          <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filtrar projetos por área">
             <button type="button" data-filter="todos" class="filter-btn is-active">Todos</button>
             <button type="button" data-filter="corporativo" class="filter-btn">Corporativo</button>
             <button type="button" data-filter="musica" class="filter-btn">Música</button>
@@ -507,7 +509,7 @@
 
     <!-- ============ DEPOIMENTOS ============ -->
     <section id="depoimentos" class="relative py-24 lg:py-32 bg-mist dark:bg-ink border-t border-black/5 dark:border-white/10">
-      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="px-6 lg:px-10">
         <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4" data-reveal>Depoimentos</p>
         <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-lg mb-14" data-reveal>
           O que dizem sobre trabalhar comigo.

@@ -193,10 +193,16 @@
   .hero-cinema__stage {
     position: relative;
     z-index: 1;
-    padding-left: calc(75 * var(--hu));
+    /* Matches the header/section container's own left inset (px-6 lg:px-10)
+       so the headline lines up with the logo above it, instead of drifting
+       with viewport height like the rest of the hero's --hu unit system. */
+    padding-left: 24px;
     padding-right: calc(48 * var(--hu));
     max-width: 44rem;
     font-family: 'Manrope', var(--font-sans);
+  }
+  @media (min-width: 1024px) {
+    .hero-cinema__stage { padding-left: 40px; }
   }
 
   /* Notification-style tags, right side of the hero — pop in one by one as
