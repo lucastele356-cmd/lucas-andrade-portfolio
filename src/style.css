@@ -561,6 +561,21 @@
     .skill-card { position: relative; top: 0 !important; margin-bottom: 12px; }
   }
 
+  /* Below ~640px the fixed 604×219 card can't fit the wrapped description
+     text in 219px of height — let it grow instead of clipping. */
+  @media (max-width: 640px) {
+    .skill-card {
+      height: auto;
+      min-height: 219px;
+      gap: 20px;
+      padding: 24px;
+    }
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
   /* ---- Clients strip ----
      Continuous CSS-only marquee (list rendered twice, track slides -50%
      then loops) — no JS/library needed for four items. */
