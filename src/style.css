@@ -189,6 +189,20 @@
   @media (max-width: 640px) {
     .hero-cinema__video { object-position: center 20%; }
   }
+  /* Desktop/tablet only: show the footage at its real 960x540 proportions
+     instead of object-fit:cover stretching/zooming it to fill a much
+     taller viewport box. Mobile (its own portrait clip) is untouched. */
+  @media (min-width: 641px) {
+    .hero-cinema__video {
+      top: 50%;
+      bottom: auto;
+      height: auto;
+      aspect-ratio: 960 / 540;
+      object-fit: contain;
+      object-position: center;
+      translate: 0 -50%;
+    }
+  }
   /* Grades the footage's existing left-to-right light sweep into the exact
      brand blue, soft-light so it shifts tone without flattening the
      highlights/shadows already in the shot. */
@@ -470,11 +484,14 @@
   .sobre-bg__img {
     position: absolute;
     inset: 0;
+    bottom: auto;
     z-index: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
+    height: auto;
+    /* bg-desktop.jpg's own 2200x1319 proportions — container follows the
+       image's real size instead of stretching/cropping it via cover. */
+    aspect-ratio: 2200 / 1319;
+    object-fit: contain;
   }
   /* Mobile: the container follows the photo's own 1000×1778 proportions
      instead of stretching/cropping it to fill the section's (unrelated,

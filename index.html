@@ -143,7 +143,10 @@
 
     <!-- ============ SOBRE ============ -->
     <section id="sobre" class="sobre-bg relative py-24 lg:py-32 bg-ink overflow-hidden">
-      <img src="/sobre/bg.jpg" alt="" class="sobre-bg__img" aria-hidden="true" />
+      <picture>
+        <source media="(max-width: 640px)" srcset="/sobre/bg-mobile.jpg" />
+        <img src="/sobre/bg-desktop.jpg" alt="" class="sobre-bg__img" aria-hidden="true" />
+      </picture>
       <div class="sobre-bg__scrim" aria-hidden="true"></div>
       <div class="sobre-bg__glow" aria-hidden="true"></div>
 
