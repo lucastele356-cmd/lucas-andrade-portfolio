@@ -30,12 +30,17 @@
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
-    <div class="px-6 lg:px-10 h-14 sm:h-16 lg:h-20 flex items-center justify-between">
-      <a href="#top" class="flex items-center" aria-label="Lucas Andrade Design — início">
-        <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-5 sm:h-6 w-auto invert dark:invert-0" />
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 text-ink dark:text-white" aria-label="Lucas Andrade Design — início">
+        <svg viewBox="0 0 96.16 96.15" class="h-6 w-6 sm:h-8 sm:w-8 text-[#2952E3] dark:text-white" fill="currentColor" aria-hidden="true">
+          <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+          <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+          <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+        </svg>
+        <span class="hidden sm:block font-display text-sm tracking-[0.14em] uppercase">Lucas Andrade <span class="text-gray-400 dark:text-gray-500 font-sans normal-case tracking-normal">design</span></span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-9 font-mono-brand text-xs uppercase tracking-[0.12em] text-gray-600 dark:text-gray-300">
+      <nav class="hidden md:flex items-center gap-9 font-mono-brand text-xs uppercase tracking-[0.12em] text-gray-600 dark:text-gray-300">
         <a href="#projetos" class="hover:text-brand dark:hover:text-lilac transition-colors">Projetos</a>
         <a href="#sobre" class="hover:text-brand dark:hover:text-lilac transition-colors">Sobre</a>
         <a href="#depoimentos" class="hover:text-brand dark:hover:text-lilac transition-colors">Depoimentos</a>
@@ -52,14 +57,14 @@
           Fale comigo
         </a>
 
-        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu" class="lg:hidden grid place-items-center h-10 w-10 text-gray-700 dark:text-gray-200">
+        <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu" class="md:hidden grid place-items-center h-10 w-10 text-gray-700 dark:text-gray-200">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
       </div>
     </div>
 
     <!-- Mobile nav panel -->
-    <div id="mobile-nav" hidden class="lg:hidden glass bg-white/90 dark:bg-ink/90 border-t border-black/5 dark:border-white/10">
+    <div id="mobile-nav" hidden class="md:hidden glass bg-white/90 dark:bg-ink/90 border-t border-black/5 dark:border-white/10">
       <nav class="flex flex-col px-6 py-6 gap-5 font-mono-brand text-sm uppercase tracking-[0.1em] text-gray-700 dark:text-gray-200">
         <a href="#projetos" class="nav-mobile-link">Projetos</a>
         <a href="#sobre" class="nav-mobile-link">Sobre</a>
@@ -75,7 +80,7 @@
     <div class="hero-scrub" id="hero-scrub">
     <section class="hero-cinema" id="hero-cinema">
       <div class="hero-cinema__plate" aria-hidden="true">
-        <canvas class="hero-cinema__video" id="hero-frames" width="960" height="1707"></canvas>
+        <canvas class="hero-cinema__video" id="hero-frames" width="960" height="540"></canvas>
         <div class="hero-cinema__tint" aria-hidden="true"></div>
       </div>
 
@@ -117,7 +122,7 @@
           <span class="hc-scrub-rise" data-hc-at="0.2">Construo sistemas visuais pra marcas que precisam ser lembradas.</span>
         </p>
         <div class="hc-actions hc-scrub-rise" data-hc-at="0.26">
-          <a href="#projetos" class="btn-shine inline-flex items-center justify-center px-5 sm:px-7 h-10 sm:h-[50px] text-white font-mono-brand text-[11px] sm:text-xs uppercase tracking-[0.08em]">Ver projetos</a>
+          <a href="#projetos" class="btn-shine inline-flex items-center justify-center px-7 h-[50px] text-white font-mono-brand text-xs uppercase tracking-[0.08em]">Ver projetos</a>
           <a href="#contato" class="hc-ghost">Falar comigo</a>
         </div>
       </div>
@@ -130,57 +135,64 @@
           <circle class="hc-scrolldown__dot" cx="12" cy="11" r="2.1" fill="currentColor" />
         </svg>
       </div>
+
+      <!-- real projects stand in for the reference's placeholder partner strip -->
+      <div class="hero-cinema__logos" aria-label="Projetos selecionados">
+        <a href="/projeto.html?slug=tp" class="hc-lg hc-fade" style="animation-delay:.5s">TP Consultoria</a>
+        <a href="/projeto.html?slug=anthony" class="hc-lg hc-fade" style="animation-delay:.56s">Anthony Carbert</a>
+        <a href="/projeto.html?slug=solve" class="hc-lg hc-fade" style="animation-delay:.62s">Solve Scale</a>
+        <a href="/projeto.html?slug=informada" class="hc-lg hc-fade" style="animation-delay:.68s">Instituto Informada</a>
+      </div>
     </section>
     </div>
 
     <!-- ============ SOBRE ============ -->
-    <section id="sobre" class="sobre-bg relative py-24 lg:py-32 bg-ink overflow-hidden">
-      <img src="/sobre/bg.jpg" alt="" class="sobre-bg__img" aria-hidden="true" />
-      <div class="sobre-bg__scrim" aria-hidden="true"></div>
-      <div class="sobre-bg__glow" aria-hidden="true"></div>
+    <section id="sobre" class="relative py-24 lg:py-32 bg-ink overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex items-center justify-between mb-6" data-reveal>
+          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-lilac" aria-hidden="true"></span>
+            Sobre mim
+          </p>
+          <div class="hidden sm:flex items-center gap-5 text-gray-400">
+            <a href="#top" aria-label="Início">
+              <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
+                <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+                <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+                <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-lilac transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-lilac transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.46-2.2 3v5.8h-4V9Z"/></svg>
+            </a>
+          </div>
+        </div>
 
-      <div class="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-10">
+        <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight mb-10 lg:mb-14" data-reveal>
+          <span class="text-white">Direção de marca</span><br />
+          <span class="text-gray-500">com peso conceitual.</span>
+        </h2>
+
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
-          <!-- Col 1: eyebrow + heading -->
-          <div class="lg:col-span-4 lg:self-center text-center lg:text-left" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center justify-center lg:justify-start gap-2">
-              <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
-              Sobre mim
-            </p>
-            <h2 class="font-display font-normal text-4xl lg:text-7xl leading-tight lg:whitespace-nowrap">
-              <span class="text-white">Direção de <br class="hidden lg:block" />marca</span><br />
-              <span class="text-gray-500">com peso <br class="hidden lg:block" />conceitual.</span>
-            </h2>
+          <!-- Left: portrait -->
+          <div class="lg:col-span-5" data-reveal data-parallax="0.06">
+            <div class="sobre-photo chamfer-tr-lg overflow-hidden aspect-[3/4]">
+              <img src="/sobre/lucas.jpg" alt="Lucas Andrade" class="h-full w-full object-cover" loading="lazy" />
+            </div>
           </div>
 
-          <!-- Col 2: empty — the background photo shows through here -->
-          <div class="lg:col-span-4" aria-hidden="true"></div>
-
-          <!-- Col 3: icons + bio + stats + cards -->
-          <div class="lg:col-span-4 flex flex-col" data-reveal data-parallax="0.03">
-            <div class="order-last mt-8 mb-0 lg:order-none lg:mt-0 lg:mb-8 flex flex-row items-center justify-center lg:justify-end gap-5 text-gray-400">
-              <a href="#top" aria-label="Início">
-                <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
-                  <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
-                  <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
-                  <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/olucasnacria?igsi=bzhhOWVvbjI2Ympr" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-lilac transition-colors">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-lilac transition-colors">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.2 1.46-2.2 3v5.8h-4V9Z"/></svg>
-              </a>
-            </div>
-
-            <p class="font-light text-lg text-gray-300 leading-relaxed text-left lg:text-right">
+          <!-- Right: bio + stats + cards -->
+          <div class="lg:col-span-7 flex flex-col" data-reveal data-parallax="0.03">
+            <p class="font-light text-lg text-gray-300 leading-relaxed text-right">
               Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço.
               <strong class="block mt-3 text-white font-light">Não entrego só uma logo: entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.</strong>
             </p>
 
             <div class="mt-8 flex items-center gap-4">
-              <span class="glass grid place-items-center h-11 w-11 rounded-xl bg-white/10 border border-white/20 text-lilac flex-shrink-0">
+              <span class="grid place-items-center h-11 w-11 rounded-xl bg-white/5 border border-white/10 text-lilac flex-shrink-0">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2 3 9l9 13 9-13-9-7Z"/><path d="M3 9h18M8 9l4 13 4-13"/></svg>
               </span>
               <p class="font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-300 leading-relaxed">
@@ -188,9 +200,9 @@
               </p>
             </div>
 
-            <div class="mt-auto pt-10 grid sm:grid-cols-2 gap-5">
+            <div class="mt-10 grid sm:grid-cols-2 gap-5">
               <!-- Card 1: dark stat -->
-              <div class="order-last lg:order-none glass-card chamfer-tr-lg p-7 flex flex-col justify-between min-h-[240px]">
+              <div class="chamfer-tr-lg bg-ink-2 border border-white/10 p-7 flex flex-col justify-between min-h-[240px]">
                 <div>
                   <p class="font-display font-light text-5xl text-white" data-counter data-counter-to="300" data-counter-suffix="+">0</p>
                   <p class="mt-2 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">Projetos entregues</p>
@@ -203,14 +215,7 @@
                 <img src="/projetos/tp/capa.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
                 <div class="relative z-10 h-full flex flex-col justify-between p-7">
-                  <div class="flex items-start justify-between gap-3">
-                    <p class="font-light text-xs text-gray-200 max-w-[180px] leading-relaxed">Clientes atendidos com identidade visual e sistemas completos.</p>
-                    <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 text-white/40 flex-shrink-0" fill="currentColor" aria-hidden="true">
-                      <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
-                      <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
-                      <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
-                    </svg>
-                  </div>
+                  <p class="font-light text-xs text-gray-200 max-w-[180px] leading-relaxed">Clientes atendidos com identidade visual e sistemas completos.</p>
                   <p class="font-display font-light text-5xl text-white" data-counter data-counter-to="20" data-counter-suffix="+">0</p>
                 </div>
               </div>
@@ -222,15 +227,21 @@
 
     <!-- ============ PROJETOS ============ -->
     <section id="projetos" class="relative py-24 lg:py-32 bg-white dark:bg-ink-2 border-t border-black/5 dark:border-white/10">
-      <div class="px-6 lg:px-10">
-        <div class="mx-auto max-w-2xl text-center mb-14" data-reveal>
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center justify-center gap-2">
-            <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
-            Projetos selecionados
-          </p>
-          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
-            Cases que constroem sistema, não só imagem.
-          </h2>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14" data-reveal>
+          <div>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4">Projetos selecionados</p>
+            <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-lg">
+              Cases que constroem sistema, não só imagem.
+            </h2>
+          </div>
+
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar projetos por área">
+            <button type="button" data-filter="todos" class="filter-btn is-active">Todos</button>
+            <button type="button" data-filter="corporativo" class="filter-btn">Corporativo</button>
+            <button type="button" data-filter="musica" class="filter-btn">Música</button>
+            <button type="button" data-filter="institucional" class="filter-btn">Institucional</button>
+          </div>
         </div>
       </div>
 
@@ -239,6 +250,12 @@
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=tp" class="group block">
             <div class="px-6 lg:px-10">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">TP Consultoria</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Consultoria de benefícios</p>
             </div>
@@ -252,6 +269,12 @@
         <article data-category="musica" class="project-card">
           <a href="/projeto.html?slug=anthony" class="group block">
             <div class="px-6 lg:px-10">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Anthony Carbert</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Artista musical</p>
             </div>
@@ -267,6 +290,12 @@
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=solve" class="group block">
             <div class="px-6 lg:px-10">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Solve Scale</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Marketing empresarial</p>
             </div>
@@ -280,6 +309,12 @@
         <article data-category="institucional" class="project-card">
           <a href="/projeto.html?slug=informada" class="group block">
             <div class="px-6 lg:px-10">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
+                  <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
+                </span>
+                <span class="font-mono-brand text-[11px] text-gray-400 dark:text-gray-500">2026</span>
+              </div>
               <h3 class="font-display font-normal text-3xl sm:text-4xl text-ink dark:text-white transition-colors group-hover:text-brand dark:group-hover:text-lilac">Instituto Escola Informada</h3>
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Instituto de proteção infantil</p>
             </div>
@@ -290,8 +325,12 @@
         </article>
 
         <!-- Ver mais projetos -->
-        <a href="https://www.instagram.com/olucasnacria?igsi=bzhhOWVvbjI2Ympr" target="_blank" rel="noopener" class="group block">
-          <div class="hidden sm:block px-6 lg:px-10 invisible" aria-hidden="true">
+        <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="group block">
+          <div class="px-6 lg:px-10 invisible" aria-hidden="true">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em]">{ Identidade Visual }</span>
+              <span class="font-mono-brand text-[11px]">2026</span>
+            </div>
             <h3 class="font-display font-normal text-3xl sm:text-4xl">Ver mais projetos</h3>
             <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em]">Identidade visual · Portfólio completo</p>
           </div>
@@ -310,8 +349,8 @@
       <div class="max-w-7xl mx-auto px-6 lg:px-10">
         <div class="skills-grid">
           <div class="skills-info" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center gap-2">
-              <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4 flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand dark:bg-lilac" aria-hidden="true"></span>
               Ferramentas &amp; habilidades
             </p>
             <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-sm">
@@ -468,334 +507,46 @@
 
     <!-- ============ DEPOIMENTOS ============ -->
     <section id="depoimentos" class="relative py-24 lg:py-32 bg-mist dark:bg-ink border-t border-black/5 dark:border-white/10">
-      <div class="px-6 lg:px-10">
-        <div class="mx-auto max-w-2xl text-center mb-14" data-reveal>
-          <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center justify-center gap-2">
-            <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
-            Depoimentos
-          </p>
-          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
-            O que dizem sobre trabalhar comigo.
-          </h2>
+      <div class="max-w-7xl mx-auto px-6 lg:px-10">
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-lilac mb-4" data-reveal>Depoimentos</p>
+        <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-lg mb-14" data-reveal>
+          O que dizem sobre trabalhar comigo.
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6" data-reveal-group>
+          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Equipe TP Consultoria</footer>
+          </blockquote>
+          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.08">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Anthony Carbert</footer>
+          </blockquote>
+          <blockquote class="p-8 bg-surface chamfer-tr-lg border border-black/5 dark:border-white/10" data-reveal data-parallax="0.04">
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
+            <footer class="mt-6 font-mono-brand text-[11px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400">Cliente, consultoria de benefícios</footer>
+          </blockquote>
         </div>
-
-      </div>
-
-      <div class="testi-strip">
-        <div class="testi-track">
-          <!-- real set (repeated so one half is always wider than any viewport, so the -50% loop never runs out of content) -->
-          <article class="testi-card">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-
-          <!-- repeat, hidden from AT -->
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-
-          <!-- repeat, hidden from AT -->
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-
-          <!-- duplicate half, hidden from AT, closes the loop seamlessly -->
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
-            <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Equipe TP Consultoria</span>
-                <span class="testi-card__handle">@tpconsultoriasselect</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
-            <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Anthony Carbert</span>
-                <span class="testi-card__handle">@anthonycarbert</span>
-              </span>
-            </div>
-          </article>
-          <article class="testi-card" aria-hidden="true">
-            <div class="testi-card__top">
-              <svg class="testi-card__quote" viewBox="0 0 32 24" fill="currentColor" aria-hidden="true"><path d="M0 24V14.4C0 9.87 1.07 6.13 3.2 3.2 5.33 1.07 8.13 0 11.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H12v12.8H0Zm18 0V14.4c0-4.53 1.07-8.27 3.2-11.2C23.33 1.07 26.13 0 29.6 0v4.8c-1.87 0-3.33.6-4.4 1.8-1.07 1.2-1.6 2.73-1.6 4.6H30v12.8H18Z"/></svg>
-              <span class="testi-card__stars" aria-label="5 de 5 estrelas">
-                <span class="testi-card__score">5.0/5</span>★★★★★
-              </span>
-            </div>
-            <p class="testi-card__text">"Processo direto, sem enrolação. Trouxe visão estratégica pra decisão de marca que a gente vinha adiando havia meses."</p>
-            <div class="testi-card__author">
-              <span class="testi-card__avatar testi-card__avatar--initial" aria-hidden="true">C</span>
-              <span class="testi-card__meta">
-                <span class="testi-card__name">Cliente</span>
-                <span class="testi-card__handle">Consultoria de benefícios</span>
-              </span>
-            </div>
-          </article>
-                </div>
       </div>
     </section>
 
     <!-- ============ CONTATO ============ -->
     <section id="contato" class="relative py-28 lg:py-36 bg-ink overflow-hidden">
       <div class="relative max-w-3xl mx-auto px-6 text-center" data-reveal-group>
-        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-5 flex items-center justify-center gap-2" data-reveal>
-          <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
-          Contato
-        </p>
+        <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-lilac mb-5" data-reveal>Contato</p>
         <h2 class="font-display font-normal text-4xl sm:text-6xl leading-tight text-white" data-reveal data-parallax="0.05">
           Vamos construir algo com direção.
         </h2>
         <p class="mt-6 text-lg text-gray-300 max-w-xl mx-auto" data-reveal>
           Se sua marca precisa de mais do que um retoque visual, bora conversar sobre o sistema certo pra ela.
         </p>
-        <div class="mt-7 flex flex-wrap items-center justify-center gap-4" data-reveal>
+        <div class="mt-7 flex justify-center" data-reveal>
+          <span class="inline-flex items-center gap-2 h-6 px-2.5 rounded-full font-mono-brand text-[10px] uppercase tracking-[0.1em]" style="background: rgba(193,251,0,.12); color: #C1FB00; border: 1px solid rgba(193,251,0,.35);">
+            <span class="h-1.5 w-1.5 rounded-full" style="background: #C1FB00; box-shadow: 0 0 12px rgba(193,251,0,.6);" aria-hidden="true"></span>
+            Aberto pra novos projetos
+          </span>
+        </div>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-4" data-reveal>
           <a href="https://wa.me/5561995259902" target="_blank" rel="noopener" class="btn-shine inline-flex items-center px-7 py-3.5 text-white font-mono-brand text-xs uppercase tracking-[0.1em]">
             Chamar no WhatsApp
           </a>
@@ -820,13 +571,18 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
         <div class="max-w-xs">
-          <a href="#top" class="flex items-center" aria-label="Lucas Andrade Design — início">
-            <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-8 w-auto" />
+          <a href="#top" class="flex items-center gap-3 text-white" aria-label="Lucas Andrade Design — início">
+            <svg viewBox="0 0 96.16 96.15" class="h-7 w-7 text-[#6FA8FF] dark:text-white" fill="currentColor" aria-hidden="true">
+              <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
+              <path d="M2.82,35.5h43.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v43.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99v-15.01c0-1.56-1.26-2.82-2.81-2.82h-15.02c-.75,0-1.46-.3-1.99-.83L.83,40.31c-1.77-1.77-.52-4.81,1.99-4.81Z"/>
+              <rect x=".36" y="69.38" width="26" height="26" rx="3.09" ry="3.09"/>
+            </svg>
+            <span class="font-display text-sm tracking-[0.14em] uppercase">Lucas Andrade</span>
           </a>
           <p class="mt-4 text-sm text-gray-400 leading-relaxed">Design gráfico e consultoria criativa: identidade visual, editorial, motion e social media.</p>
         </div>
 
-        <nav class="flex flex-wrap gap-x-10 gap-y-6 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">
+        <nav class="flex gap-10 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">
           <div class="flex flex-col gap-3">
             <span class="text-gray-600">Navegação</span>
             <a href="#projetos" class="hover:text-lilac transition-colors">Projetos</a>
@@ -836,7 +592,7 @@
           </div>
           <div class="flex flex-col gap-3">
             <span class="text-gray-600">Redes</span>
-            <a href="https://www.instagram.com/olucasnacria?igsi=bzhhOWVvbjI2Ympr" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/lucasteleart/" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">Instagram</a>
             <a href="#" class="hover:text-lilac transition-colors">Behance</a>
             <a href="https://www.linkedin.com/in/lucas-andrade-96177a118" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">LinkedIn</a>
           </div>
