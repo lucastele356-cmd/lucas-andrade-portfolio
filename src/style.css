@@ -175,6 +175,11 @@
     object-fit: cover;
     object-position: 62% center;
   }
+  /* Mobile-only: portrait footage (different clip/framing than desktop), so
+     it needs its own crop anchor. Desktop rule above is untouched. */
+  @media (max-width: 640px) {
+    .hero-cinema__video { object-position: center 20%; }
+  }
   /* Grades the footage's existing left-to-right light sweep into the exact
      brand blue, soft-light so it shifts tone without flattening the
      highlights/shadows already in the shot. */

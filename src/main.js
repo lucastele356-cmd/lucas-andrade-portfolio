@@ -33,7 +33,16 @@ const heroCanvas = document.getElementById('hero-frames')
 const reducedMotionForHero = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 if (heroScrub && heroCinema && heroCanvas) {
+  // Mobile gets its own portrait-oriented footage (different framing/aspect
+  // than the desktop clip), swapped in below 641px only — desktop keeps its
+  // existing frame sequence and canvas resolution untouched.
+  const isMobileHero = window.matchMedia('(max-width: 640px)').matches
   const FRAME_COUNT = 48
+  const FRAMES_PATH = isMobileHero ? '/hero/frames-mobile' : '/hero/frames'
+  if (isMobileHero) {
+    heroCanvas.width = 960
+    heroCanvas.height = 1708
+  }
   const ctx = heroCanvas.getContext('2d')
   const frames = new Array(FRAME_COUNT)
   let drawnIndex = -1
@@ -48,7 +57,7 @@ if (heroScrub && heroCinema && heroCanvas) {
   const loadFrame = (i) => {
     if (frames[i]) return frames[i]
     const img = new Image()
-    img.src = `/hero/frames/f${String(i).padStart(3, '0')}.jpg`
+    img.src = `${FRAMES_PATH}/f${String(i).padStart(3, '0')}.jpg`
     frames[i] = img
     return img
   }
