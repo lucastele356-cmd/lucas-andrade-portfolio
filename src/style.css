@@ -1209,4 +1209,22 @@
   .hc-actions { justify-content: center; }
   .skill-body h3, .skill-body p { text-align: center; }
   .hc-headline { line-height: 1; }
+
+  /* Sobre (Col 3), mobile only: the stats badge and the social icons —
+     normally two separate stacked rows, in that order, with the bio
+     paragraph between them — become one row (stats at the left edge,
+     icons at the right edge), with bio and the cards each forced onto
+     their own full-width row after it via flex-basis:100%. Desktop's
+     flex-col stacking (icons → bio → stats → cards) is untouched. */
+  .sobre-col3 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .sobre-stats { order: 1; margin-top: 0; }
+  .sobre-icons { order: 2; margin-bottom: 0; }
+  .sobre-bio { order: 3; flex-basis: 100%; }
+  .sobre-cards { order: 4; flex-basis: 100%; margin-top: 0; padding-top: 0; }
 }
