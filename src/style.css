@@ -1227,4 +1227,14 @@
   .sobre-icons { order: 2; margin-bottom: 0; }
   .sobre-bio { order: 3; flex-basis: 100%; }
   .sobre-cards { order: 4; flex-basis: 100%; margin-top: 0; padding-top: 0; }
+
+  /* Clients marquee, mobile only: everything scaled down so the strip
+     reads as a compact badge instead of one giant card per screen. */
+  .clients-strip { padding-block: 20px; }
+  .client-card { gap: 10px; margin-right: 28px; }
+  .client-card__avatar { width: 40px; height: 40px; }
+  .client-card__logo { height: 36px; max-width: 80px; margin-left: 28px; }
+  .client-card__name { font-size: 0.85rem; }
+  .client-card__handle { font-size: 0.6rem; }
+  .client-card__badge { width: 12px; height: 12px; }
 }
