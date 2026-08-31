@@ -33,6 +33,10 @@
     @apply bg-mist text-gray-800 dark:bg-ink dark:text-gray-200;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    /* Extra safety net for touch: stops a mobile browser's horizontal
+       swipe/bounce gesture from ever engaging, even if some future
+       element momentarily overflows before this stylesheet catches it. */
+    overscroll-behavior-x: none;
   }
   ::selection {
     background: var(--color-lilac);
@@ -139,7 +143,12 @@
      on its own — .hero-scrub below supplies the extra scroll distance. */
   .hero-scrub {
     position: relative;
-    height: 260vh;
+    /* svh (not vh) to match .hero-cinema's own 100svh below — on mobile the
+       address bar hiding/showing makes plain vh drift from svh, which
+       desyncs this scroll-space from the sticky hero's real height and
+       leaves an empty gap once it unsticks early. Identical to vh on
+       desktop (no dynamic toolbar there), so this is a mobile-only fix. */
+    height: 260svh;
   }
 
   .hero-cinema {
@@ -467,6 +476,22 @@
     object-fit: cover;
     object-position: center 20%;
   }
+  /* Mobile: the container follows the photo's own 1000×1778 proportions
+     instead of stretching/cropping it to fill the section's (unrelated,
+     text-driven) height — height:auto + aspect-ratio replaces the inset:0
+     cover above, so nothing outside the photo's real shape gets cropped.
+     Whatever section height remains below it just shows bg-ink, which
+     blends with the photo's own dark lower half. */
+  @media (max-width: 640px) {
+    .sobre-bg__img {
+      top: 0;
+      bottom: auto;
+      height: auto;
+      aspect-ratio: 1000 / 1778;
+      object-fit: contain;
+      object-position: top;
+    }
+  }
   .sobre-bg__scrim {
     position: absolute;
     inset: 0;
@@ -515,7 +540,12 @@
      later cards always paint over earlier ones. Pure CSS, no JS needed. */
   .skills-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr), not bare 1fr: without the 0 floor, this track's
+       automatic minimum size is the min-content size of its contents —
+       and .skill-card's fixed 604px width counts toward that, so the
+       whole grid (and the page) was forced ~604px wide on narrow screens.
+       Same fix the desktop columns below already use. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 48px;
   }
   @media (min-width: 1024px) {
@@ -879,17 +909,14 @@
 
   @media (max-width: 640px) {
     .hero-cinema__stage { padding-right: calc(24 * var(--hu)); }
+    /* Safety net: a single long word (e.g. "extraordinário,") at the
+       headline's fluid mobile size can be wider than a narrow phone's
+       available width — let it break instead of overflowing/clipping. */
+    .hc-headline { overflow-wrap: break-word; }
     /* Stays absolutely positioned (not flowed) so it still fits inside the
        fixed-height sticky hero used for scroll-scrubbing — 2×2 grid per the
        reference's phone layout instead of a single row. */
-    .hero-cinema__logos {
-      left: calc(24 * var(--hu));
-      right: calc(24 * var(--hu));
-      bottom: calc(28 * var(--hu));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: calc(14 * var(--hu)) calc(20 * var(--hu));
-    }
+    .hero-cinema__logos { display: none; }
   }
 
   /* On-load entrance for above-the-fold content that isn't scroll-triggered
@@ -1103,4 +1130,66 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ---- Mobile text scale-down (site-wide, ~18% smaller) ----
+   Deliberately placed OUTSIDE the @layer utilities block above (this file's
+   own classes, and Tailwind's generated text-* utilities, all live inside
+   named layers) so these plain, unlayered rules win the cascade regardless
+   of layer order — guaranteeing they override without needing !important.
+   Scoped to max-width:640px only; tablet/desktop sizes are untouched. */
+@media (max-width: 640px) {
+  .text-xs  { font-size: 0.615rem; }
+  .text-sm  { font-size: 0.7175rem; }
+  .text-lg  { font-size: 0.9225rem; }
+  .text-3xl { font-size: 1.5375rem; }
+  .text-4xl { font-size: 1.845rem; }
+  .text-5xl { font-size: 2.46rem; }
+  .text-6xl { font-size: 3.075rem; }
+  .text-7xl { font-size: 3.69rem; }
+
+  .hc-headline { font-size: calc(64 * var(--hh) * 0.82); }
+  .hc-sub { font-size: calc(19 * var(--hh) * 0.82); }
+  .hc-ghost { font-size: 0.656rem; }
+  .hc-lg { font-size: 0.492rem; }
+
+  .skill-icon { font-size: 0.861rem; }
+  .skill-body h3 { font-size: 0.943rem; }
+  .skill-body p { font-size: 0.7175rem; }
+  .skill-bar em { font-size: 0.574rem; }
+
+  .client-card__name { font-size: 1.025rem; }
+  .client-card__handle { font-size: 0.697rem; }
+
+  .testi-card__stars { font-size: 0.738rem; }
+  .testi-card__score { font-size: 0.574rem; }
+  .testi-card__text { font-size: 0.779rem; }
+  .testi-card__name { font-size: 0.738rem; }
+  .testi-card__handle { font-size: 0.615rem; }
+
+  .case-meta-label { font-size: 9px; }
+  .case-meta-value { font-size: 0.82rem; }
+  .case-content p { font-size: 0.9225rem; }
+}
+
+/* ---- Mobile centering pass (site-wide) ----
+   Custom (non-Tailwind-utility) classes that were still left/right-aligned
+   on phones — Tailwind-class elements were centered directly in the HTML
+   via text-center/justify-center lg: overrides instead, so this only
+   covers what those can't reach. Same unlayered-at-EOF placement as the
+   text-scale block above, and same max-width:640px scope — desktop/tablet
+   untouched. */
+@media (max-width: 640px) {
+  .hero-cinema { justify-content: center; }
+  .hero-cinema__stage {
+    max-width: none;
+    padding-left: 24px;
+    text-align: center;
+    /* Shifts the whole title/sub/buttons block down 50% of its own height,
+       away from vertical-center, per explicit request. */
+    translate: 0 50%;
+  }
+  .hc-actions { justify-content: center; }
+  .skill-body h3, .skill-body p { text-align: center; }
+  .hc-headline { line-height: 1; }
 }

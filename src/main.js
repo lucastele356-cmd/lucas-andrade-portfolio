@@ -40,8 +40,8 @@ if (heroScrub && heroCinema && heroCanvas) {
   const FRAME_COUNT = 48
   const FRAMES_PATH = isMobileHero ? '/hero/frames-mobile' : '/hero/frames'
   if (isMobileHero) {
-    heroCanvas.width = 960
-    heroCanvas.height = 1708
+    heroCanvas.width = 720
+    heroCanvas.height = 1280
   }
   const ctx = heroCanvas.getContext('2d')
   const frames = new Array(FRAME_COUNT)

@@ -30,9 +30,9 @@
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
-    <div class="px-6 lg:px-10 h-20 flex items-center justify-between">
+    <div class="px-6 lg:px-10 h-12 sm:h-16 lg:h-20 flex items-center justify-between">
       <a href="#top" class="flex items-center" aria-label="Lucas Andrade Design — início">
-        <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-5 sm:h-6 w-auto invert dark:invert-0" />
+        <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-4 sm:h-6 w-auto invert dark:invert-0" />
       </a>
 
       <nav class="hidden lg:flex items-center gap-9 font-mono-brand text-xs uppercase tracking-[0.12em] text-gray-600 dark:text-gray-300">
@@ -60,7 +60,7 @@
 
     <!-- Mobile nav panel -->
     <div id="mobile-nav" hidden class="lg:hidden glass bg-white/90 dark:bg-ink/90 border-t border-black/5 dark:border-white/10">
-      <nav class="flex flex-col px-6 py-6 gap-5 font-mono-brand text-sm uppercase tracking-[0.1em] text-gray-700 dark:text-gray-200">
+      <nav class="flex flex-col items-center text-center px-6 py-6 gap-5 font-mono-brand text-sm uppercase tracking-[0.1em] text-gray-700 dark:text-gray-200">
         <a href="#projetos" class="nav-mobile-link">Projetos</a>
         <a href="#sobre" class="nav-mobile-link">Sobre</a>
         <a href="#depoimentos" class="nav-mobile-link">Depoimentos</a>
@@ -150,16 +150,16 @@
       <div class="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-10">
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-14" data-reveal-group>
           <!-- Col 1: eyebrow + heading -->
-          <div class="lg:col-span-4 lg:self-center" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center gap-2">
+          <div class="lg:col-span-4 lg:self-center text-center lg:text-left" data-reveal>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-white mb-3 flex items-center justify-center lg:justify-start gap-2">
               <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
               Sobre mim
             </p>
-            <h2 class="font-display font-normal text-4xl lg:text-7xl leading-tight lg:whitespace-nowrap">
-              <span class="text-white">Direção de</span><br />
+            <h2 class="font-display font-normal text-4xl lg:text-7xl leading-none lg:leading-tight lg:whitespace-nowrap">
+              <span class="text-white">Direção de</span> <br class="hidden lg:block" />
               <span class="text-white">marca</span><br />
-              <span class="text-gray-500">com peso</span><br />
-              <span class="text-gray-500">conceitual.</span>
+              <span class="text-white lg:text-gray-500">com peso</span> <br class="hidden lg:block" />
+              <span class="text-white lg:text-gray-500">conceitual.</span>
             </h2>
           </div>
 
@@ -168,7 +168,7 @@
 
           <!-- Col 3: icons + bio + stats + cards -->
           <div class="lg:col-span-4 flex flex-col" data-reveal data-parallax="0.03">
-            <div class="flex items-center justify-end gap-5 text-gray-400 mb-8">
+            <div class="flex items-center justify-center lg:justify-end gap-5 text-gray-400 mb-8">
               <a href="#top" aria-label="Início">
                 <svg viewBox="0 0 96.16 96.15" class="h-5 w-5 hover:text-lilac transition-colors" fill="currentColor" aria-hidden="true">
                   <path d="M3.32,0h78.23c.75,0,1.46.3,1.99.83l11.78,11.79c.53.53.83,1.24.83,1.99v78.22c0,2.51-3.04,3.77-4.81,1.99l-17.09-17.09c-.53-.53-.83-1.25-.83-1.99V25.73c0-1.56-1.26-2.82-2.81-2.82H20.6c-.75,0-1.46-.3-1.99-.83L1.33,4.81C-.44,3.03.81,0,3.32,0Z"/>
@@ -184,12 +184,12 @@
               </a>
             </div>
 
-            <p class="font-light text-lg text-gray-300 leading-relaxed text-right">
+            <p class="font-light text-lg text-gray-300 leading-relaxed text-center lg:text-right">
               Trabalho na fronteira entre estratégia e forma: identidade visual, editorial, motion design e social media, sempre partindo de um porquê antes de qualquer traço.
               <strong class="block mt-3 text-white font-light">Não entrego só uma logo: entrego um sistema que aguenta papelaria, app, loja física e patrocínio sem perder coerência.</strong>
             </p>
 
-            <div class="mt-8 flex items-center gap-4">
+            <div class="mt-8 flex items-center justify-center lg:justify-start gap-4">
               <span class="glass grid place-items-center h-11 w-11 rounded-xl bg-white/10 border border-white/20 text-lilac flex-shrink-0">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2 3 9l9 13 9-13-9-7Z"/><path d="M3 9h18M8 9l4 13 4-13"/></svg>
               </span>
@@ -210,7 +210,7 @@
 
               <!-- Card 2: image stat -->
               <div class="relative chamfer-tr-lg overflow-hidden min-h-[240px]">
-                <img src="/projetos/tp/capa.png" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <img src="/projetos/tp/capa.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
                 <div class="relative z-10 h-full flex flex-col justify-between p-7">
                   <div class="flex items-start justify-between gap-3">
@@ -238,7 +238,7 @@
             <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
             Projetos selecionados
           </p>
-          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
+          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-none lg:leading-tight text-ink dark:text-white">
             Cases que constroem sistema, não só imagem.
           </h2>
         </div>
@@ -248,8 +248,8 @@
         <!-- Case 1: TP Consultoria -->
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=tp" class="group block">
-            <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
+            <div class="px-6 lg:px-10 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
                 </span>
@@ -259,7 +259,7 @@
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Consultoria de benefícios</p>
             </div>
             <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
-              <img src="/projetos/tp/capa.png" alt="TP Consultoria" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              <img src="/projetos/tp/capa.jpg" alt="TP Consultoria" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
             </div>
           </a>
         </article>
@@ -267,8 +267,8 @@
         <!-- Case 2: Anthony Carbert -->
         <article data-category="musica" class="project-card">
           <a href="/projeto.html?slug=anthony" class="group block">
-            <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
+            <div class="px-6 lg:px-10 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
                 </span>
@@ -278,7 +278,7 @@
               <p class="mt-1 mb-6 font-mono-brand text-[11px] uppercase tracking-[0.08em] text-gray-500 dark:text-gray-400">Identidade visual · Artista musical</p>
             </div>
             <div class="project-card-frame aspect-[16/11] overflow-hidden" data-parallax="0.05">
-              <img src="/projetos/anthony/capa.png" alt="Anthony Carbert" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
+              <img src="/projetos/anthony/capa.jpg" alt="Anthony Carbert" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
             </div>
           </a>
         </article>
@@ -288,8 +288,8 @@
         <!-- Case 3: Solve Scale -->
         <article data-category="corporativo" class="project-card">
           <a href="/projeto.html?slug=solve" class="group block">
-            <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
+            <div class="px-6 lg:px-10 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
                 </span>
@@ -307,8 +307,8 @@
         <!-- Case 4: Instituto Escola Informada -->
         <article data-category="institucional" class="project-card">
           <a href="/projeto.html?slug=informada" class="group block">
-            <div class="px-6 lg:px-10">
-              <div class="flex items-center gap-3 mb-4">
+            <div class="px-6 lg:px-10 text-center lg:text-left">
+              <div class="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <span class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-brand dark:text-lilac">
                   <span class="text-gray-400 dark:text-gray-600">{</span> Identidade Visual <span class="text-gray-400 dark:text-gray-600">}</span>
                 </span>
@@ -347,12 +347,12 @@
     <section id="habilidades" class="relative py-24 lg:py-32 bg-mist dark:bg-ink-2 border-t border-black/5 dark:border-white/10">
       <div class="max-w-7xl mx-auto px-6 lg:px-10">
         <div class="skills-grid">
-          <div class="skills-info" data-reveal>
-            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center gap-2">
+          <div class="skills-info text-center lg:text-left" data-reveal>
+            <p class="font-mono-brand text-xs uppercase tracking-[0.22em] text-brand dark:text-white mb-4 flex items-center justify-center lg:justify-start gap-2">
               <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
               Ferramentas &amp; habilidades
             </p>
-            <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white max-w-sm">
+            <h2 class="font-display font-normal text-4xl lg:text-5xl leading-none lg:leading-tight text-ink dark:text-white max-w-sm mx-auto lg:mx-0">
               Minha caixa criativa.
             </h2>
           </div>
@@ -421,85 +421,85 @@
       <div class="clients-track">
         <!-- real set -->
         <a href="/projeto.html?slug=tp" class="client-card">
-          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">TP Consultoria</span>
             <span class="client-card__handle">@tpconsultoriasselect
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=anthony" class="client-card">
-          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Anthony Carbert</span>
             <span class="client-card__handle">@anthonycarbert
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=solve" class="client-card">
-          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Solve Scale</span>
             <span class="client-card__handle">@solve.scale
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=informada" class="client-card">
-          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Instituto Informada</span>
             <span class="client-card__handle">@escola.informada
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <!-- duplicate set, hidden from AT, closes the loop seamlessly -->
         <a href="/projeto.html?slug=tp" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/tp.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">TP Consultoria</span>
             <span class="client-card__handle">@tpconsultoriasselect
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/tp.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=anthony" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/anthony.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Anthony Carbert</span>
             <span class="client-card__handle">@anthonycarbert
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/anthony.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=solve" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/solve.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Solve Scale</span>
             <span class="client-card__handle">@solve.scale
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/solve.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
         <a href="/projeto.html?slug=informada" class="client-card" aria-hidden="true" tabindex="-1">
-          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" />
+          <img src="/clients/informada.jpg" alt="" class="client-card__avatar" loading="lazy" />
           <span class="client-card__meta">
             <span class="client-card__name">Instituto Informada</span>
             <span class="client-card__handle">@escola.informada
               <svg class="client-card__badge" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 12.5l2.5 2.5 5-5.5" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </span>
-          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" />
+          <img src="/clients/logos/informada.png" alt="" class="client-card__logo" loading="lazy" />
         </a>
       </div>
     </section>
@@ -512,7 +512,7 @@
             <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
             Depoimentos
           </p>
-          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-tight text-ink dark:text-white">
+          <h2 class="font-display font-normal text-4xl lg:text-5xl leading-none lg:leading-tight text-ink dark:text-white">
             O que dizem sobre trabalhar comigo.
           </h2>
         </div>
@@ -531,7 +531,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -547,7 +547,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -581,7 +581,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -597,7 +597,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -631,7 +631,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -647,7 +647,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -681,7 +681,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -697,7 +697,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -729,7 +729,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -745,7 +745,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -777,7 +777,7 @@
             </div>
             <p class="testi-card__text">"Lucas entendeu antes de desenhar. O sistema que ele entregou aguenta cada aplicação que a gente precisou: da parede da sede ao carro de corrida."</p>
             <div class="testi-card__author">
-              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/tp.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Equipe TP Consultoria</span>
                 <span class="testi-card__handle">@tpconsultoriasselect</span>
@@ -793,7 +793,7 @@
             </div>
             <p class="testi-card__text">"O monograma virou identidade de palco antes de virar logo. Hoje é bordado, é pin, é moletom, e continua parecendo eu."</p>
             <div class="testi-card__author">
-              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" />
+              <img src="/clients/anthony.jpg" alt="" class="testi-card__avatar" loading="lazy" />
               <span class="testi-card__meta">
                 <span class="testi-card__name">Anthony Carbert</span>
                 <span class="testi-card__handle">@anthonycarbert</span>
@@ -827,7 +827,7 @@
           <span class="eyebrow-dot h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
           Contato
         </p>
-        <h2 class="font-display font-normal text-4xl sm:text-6xl leading-tight text-white" data-reveal data-parallax="0.05">
+        <h2 class="font-display font-normal text-4xl sm:text-6xl leading-none lg:leading-tight text-white" data-reveal data-parallax="0.05">
           Vamos construir algo com direção.
         </h2>
         <p class="mt-6 text-lg text-gray-300 max-w-xl mx-auto" data-reveal>
@@ -862,23 +862,23 @@
     <div class="blur blur-7"></div>
     <div class="blur blur-8"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+      <div class="flex flex-col items-center text-center md:flex-row md:items-start md:justify-between md:text-left gap-10">
         <div class="max-w-xs">
-          <a href="#top" class="flex items-center" aria-label="Lucas Andrade Design — início">
+          <a href="#top" class="flex items-center justify-center md:justify-start" aria-label="Lucas Andrade Design — início">
             <img src="/logo/lockup.png" alt="Lucas Andrade design" class="h-8 w-auto" />
           </a>
           <p class="mt-4 text-sm text-gray-400 leading-relaxed">Design gráfico e consultoria criativa: identidade visual, editorial, motion e social media.</p>
         </div>
 
-        <nav class="flex gap-10 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">
-          <div class="flex flex-col gap-3">
+        <nav class="flex justify-center md:justify-start gap-10 font-mono-brand text-xs uppercase tracking-[0.1em] text-gray-400">
+          <div class="flex flex-col items-center text-center md:items-start md:text-left gap-3">
             <span class="text-gray-600">Navegação</span>
             <a href="#projetos" class="hover:text-lilac transition-colors">Projetos</a>
             <a href="#sobre" class="hover:text-lilac transition-colors">Sobre</a>
             <a href="#depoimentos" class="hover:text-lilac transition-colors">Depoimentos</a>
             <a href="#contato" class="hover:text-lilac transition-colors">Contato</a>
           </div>
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col items-center text-center md:items-start md:text-left gap-3">
             <span class="text-gray-600">Redes</span>
             <a href="https://www.instagram.com/olucasnacria?igsi=bzhhOWVvbjI2Ympr" target="_blank" rel="noopener" class="hover:text-lilac transition-colors">Instagram</a>
             <a href="#" class="hover:text-lilac transition-colors">Behance</a>
