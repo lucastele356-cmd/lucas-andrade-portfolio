@@ -78,6 +78,12 @@
     box-shadow: 0 0 0 1px rgba(111, 168, 255, 0.3), 0 6px 24px -8px rgba(111, 168, 255, 0.5);
   }
 
+  /* Eyebrow dot — used before every section label site-wide */
+  .eyebrow-dot {
+    background: var(--color-lilac-soft);
+    box-shadow: 0 0 8px 1px var(--color-lilac-soft);
+  }
+
   .glass {
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
@@ -400,21 +406,95 @@
     .hero-cinema { position: relative; }
   }
 
-  /* ---- Sobre: blue-duotone photo treatment ---- */
-  .sobre-photo {
+  /* ---- Glass card ----
+     CSS approximation of Figma's "Glass" effect (Luz -45°/80%, Refração 80,
+     Profundidade 87, Dispersão 65, Gelo 19, Splay 88): low frost (19) means
+     mostly transparent, so a faint fill + strong backdrop-blur stands in for
+     refraction/depth; the diagonal highlight follows the -45° light; the
+     inset dual-tone edge stands in for the dispersion/chromatic fringe. */
+  .glass-card {
     position: relative;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, .18);
+    overflow: hidden;
   }
-  .sobre-photo img {
-    filter: grayscale(1) contrast(1.05);
-  }
-  .sobre-photo::after {
+  .glass-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: 1;
-    background: var(--color-brand);
-    mix-blend-mode: color;
+    background: linear-gradient(-45deg, rgba(255, 255, 255, .3) 0%, rgba(255, 255, 255, 0) 38%);
     pointer-events: none;
+  }
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 1px 1px 0 rgba(126, 146, 255, .3), inset -1px -1px 0 rgba(255, 120, 180, .18);
+    pointer-events: none;
+  }
+  .glass-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Devices/browsers without backdrop-filter support (or with it disabled,
+     e.g. no hardware acceleration) would otherwise show this card as
+     near-invisible — the 5% fill alone isn't enough without the blur behind
+     it. Fall back to a solid dark card instead. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-card {
+      background: var(--color-ink-2);
+    }
+  }
+
+  /* ---- Sobre: full-bleed background photo ----
+     Matches the Figma reference: the photo is one continuous frame (no
+     separate boxed portrait) — dark under the headline on the left, then
+     opens up into the photo's own blue tone for the rest, with no extra
+     darkening needed behind the bio/cards on the right. */
+  .sobre-bg__img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .sobre-bg__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0) 40%),
+      linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 82%, rgba(0, 0, 0, .3) 100%);
+  }
+  @media (max-width: 1023px) {
+    /* Columns stack on mobile/tablet — no side-by-side gap to frame, so a
+       flat dark scrim keeps the stacked text readable over the photo. */
+    .sobre-bg__scrim {
+      background: rgba(0, 0, 0, .82);
+    }
+  }
+
+  /* Soft vertical glow bloom behind the bio/cards column — matches the
+     ambient light capsule in the Figma reference. */
+  .sobre-bg__glow {
+    position: absolute;
+    z-index: 0;
+    top: 12%;
+    right: 12%;
+    width: 140px;
+    height: 65%;
+    border-radius: 999px;
+    background: radial-gradient(closest-side, rgba(126, 146, 255, .35), transparent 70%);
+    filter: blur(40px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  @media (max-width: 1023px) {
+    .sobre-bg__glow { display: none; }
   }
 
   /* ---- Skills / habilidades ----
@@ -561,6 +641,21 @@
     .skill-card { position: relative; top: 0 !important; margin-bottom: 12px; }
   }
 
+  /* Below ~640px the fixed 604×219 card can't fit the wrapped description
+     text in 219px of height — let it grow instead of clipping. */
+  @media (max-width: 640px) {
+    .skill-card {
+      height: auto;
+      min-height: 219px;
+      gap: 20px;
+      padding: 24px;
+    }
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
   /* ---- Clients strip ----
      Continuous CSS-only marquee (list rendered twice, track slides -50%
      then loops) — no JS/library needed for four items. */
@@ -641,6 +736,140 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .clients-track { animation: none; }
+  }
+
+  /* ---- Testimonials strip ----
+     Same continuous CSS-only marquee technique as .clients-strip (list
+     rendered twice, track slides -50% then loops), but with full quote
+     cards instead of small avatar badges. With only 3 unique testimonials,
+     one "half" of just 3 cards (~1200px) is narrower than most desktop
+     viewports — the -50% loop would run out of content and show a gap
+     before wrapping. Each half repeats the 3 cards 3x (9 cards, ~3600px)
+     so a half is always wider than any realistic viewport. */
+  .testi-strip {
+    position: relative;
+    overflow: hidden;
+    padding-block: 8px 4px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+  .testi-track {
+    display: flex;
+    align-items: stretch;
+    width: max-content;
+    animation: testiMarquee 126s linear infinite;
+  }
+  @keyframes testiMarquee {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  .testi-card {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 380px;
+    margin-right: 24px;
+    padding: 32px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .05);
+  }
+  .dark .testi-card {
+    background: var(--color-ink-2);
+    border-color: rgba(255, 255, 255, .1);
+  }
+  .testi-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .testi-card__quote {
+    width: 30px;
+    height: 22px;
+    color: rgba(0, 0, 0, .12);
+    flex-shrink: 0;
+  }
+  .dark .testi-card__quote {
+    color: rgba(255, 255, 255, .15);
+  }
+  .testi-card__stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: var(--color-brand);
+  }
+  .dark .testi-card__stars {
+    color: var(--color-lilac-soft);
+  }
+  .testi-card__score {
+    font-size: 0.7rem;
+    color: #9a9aa5;
+  }
+  .testi-card__text {
+    margin-top: 20px;
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4b4b57;
+  }
+  .dark .testi-card__text {
+    color: #c3c3cc;
+  }
+  .testi-card__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .testi-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--color-ink-2);
+  }
+  .testi-card__avatar--initial {
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-brand);
+  }
+  .testi-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+  .testi-card__name {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .dark .testi-card__name {
+    color: #fff;
+  }
+  .testi-card__handle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #9a9aa5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .testi-track { animation: none; flex-wrap: wrap; width: 100%; }
+    .testi-card:nth-child(n+4) { display: none; }
+  }
+  @media (max-width: 640px) {
+    .testi-card { width: 300px; padding: 24px; }
   }
 
   @media (max-width: 640px) {
@@ -730,18 +959,6 @@
     @apply bg-white/75 dark:bg-ink/75 border-b border-black/5 dark:border-white/10;
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
-  }
-
-  .filter-btn {
-    @apply px-4 py-2 text-[11px] uppercase tracking-[0.1em] border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors;
-    font-family: var(--font-mono);
-    border-radius: 999px;
-  }
-  .filter-btn:hover {
-    @apply border-brand dark:border-lilac text-brand dark:text-lilac;
-  }
-  .filter-btn.is-active {
-    @apply border-brand dark:border-lilac text-brand dark:text-lilac bg-brand/5 dark:bg-lilac/10;
   }
 
   .nav-mobile-link {
