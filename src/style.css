@@ -1202,9 +1202,12 @@
     max-width: none;
     padding-left: 24px;
     text-align: center;
-    /* Shifts the whole title/sub/buttons block down 50% of its own height,
-       away from vertical-center, per explicit request. */
-    translate: 0 50%;
+    /* Shifts the whole title/sub/buttons block down, away from
+       vertical-center. The value is a % of the block's OWN height, so it
+       has to stay low enough that a taller headline doesn't push the
+       buttons past the bottom of the 100svh hero (50% did, once the
+       headline grew to 3 lines). */
+    translate: 0 25%;
   }
   .hc-actions { justify-content: center; }
   .skill-body h3, .skill-body p { text-align: center; }
