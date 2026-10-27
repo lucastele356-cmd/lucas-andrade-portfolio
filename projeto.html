@@ -6,6 +6,20 @@
   <title>Projeto — Lucas Andrade Design</title>
   <meta name="description" content="Case study de identidade visual por Lucas Andrade." />
   <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
+  <link rel="apple-touch-icon" href="/logo/lockup.png" />
+
+  <!-- Open Graph / prévia ao compartilhar — genérico (site estático, sem
+       renderização por case); ajuste o domínio se não for o vercel.app -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lucas-andrade-portfolio.vercel.app/projeto.html" />
+  <meta property="og:title" content="Case study — Lucas Andrade Design" />
+  <meta property="og:description" content="Case study de identidade visual por Lucas Andrade." />
+  <meta property="og:image" content="https://lucas-andrade-portfolio.vercel.app/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lucas-andrade-portfolio.vercel.app/og-image.jpg" />
 
   <!-- Theme init: runs before paint to avoid flash of wrong theme -->
   <script>
@@ -25,6 +39,9 @@
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body class="overflow-x-hidden selection:bg-lilac">
+  <!-- Meta Pixel: fallback pra quem navega sem JavaScript — o ID aqui tem
+       que ser o MESMO de src/pixel.js. -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1639236367736622&ev=PageView&noscript=1" alt="" /></noscript>
 
   <!-- ============ HEADER ============ -->
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
@@ -51,7 +68,7 @@
           <svg id="icon-moon" class="h-[18px] w-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
         </button>
 
-        <a href="/#contato" class="btn-shine hidden sm:inline-flex items-center ml-1 px-5 h-10 text-white font-mono-brand text-xs uppercase tracking-[0.1em]">
+        <a href="/#formulario" class="btn-shine hidden sm:inline-flex items-center ml-1 px-5 h-10 text-white font-mono-brand text-xs uppercase tracking-[0.1em]">
           Fale comigo
         </a>
 
@@ -132,7 +149,7 @@
 
       <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p class="font-mono-brand text-[11px] text-gray-500">© 2026 Lucas Andrade Design. Todos os direitos reservados.</p>
-        <a href="/#contato" class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-lilac hover:text-white transition-colors">Fale comigo →</a>
+        <a href="/#formulario" class="font-mono-brand text-[11px] uppercase tracking-[0.1em] text-lilac hover:text-white transition-colors">Fale comigo →</a>
       </div>
     </div>
   </footer>

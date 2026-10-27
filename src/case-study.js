@@ -1,7 +1,9 @@
 import { initLayout, initScrollReveal } from './layout.js'
 import { projetos } from './data/projetos.js'
+import { initPixel } from './pixel.js'
 
 initLayout()
+initPixel()
 
 const params = new URLSearchParams(window.location.search)
 const projeto = projetos[params.get('slug')]

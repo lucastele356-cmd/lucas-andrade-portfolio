@@ -1,6 +1,10 @@
 import { initLayout } from './layout.js'
+import { initLeadForm } from './lead-form.js'
+import { initPixel } from './pixel.js'
 
 initLayout()
+initLeadForm()
+initPixel()
 
 // ---- Project thumbnails scale up as they enter the viewport ----
 const projectFrames = document.querySelectorAll('.project-card-frame')

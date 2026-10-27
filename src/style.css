@@ -975,7 +975,10 @@
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 100;
+    /* Acima do .lead-overlay (z-index: 200) — sem isso o cursor "sumia"
+       assim que o mouse entrava no popup do formulário, só porque o
+       popup ficava desenhado por cima dele. */
+    z-index: 300;
     border-radius: 50%;
     opacity: 0;
   }
@@ -1036,6 +1039,517 @@
       opacity: 1;
       transition: none;
     }
+  }
+
+  /* ---- Pacotes (#pacotes) ----
+     Cartões de preço reaproveitando .glass-card — mesmo vidro/realce dos
+     cartões do Sobre, só com conteúdo e lista próprios. */
+  .pacote__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-lilac-soft);
+  }
+  .pacote__nome {
+    margin-top: 10px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.25;
+    color: #fff;
+  }
+  .pacote__preco {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: #fff;
+  }
+  .pacote__lista {
+    margin-top: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pacote__lista li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, .7);
+  }
+  .pacote__lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: rgba(126, 146, 255, .15);
+    box-shadow: inset 0 0 0 1px rgba(126, 146, 255, .4);
+  }
+  .pacote__lista li::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10.5px;
+    width: 7px;
+    height: 4px;
+    border-left: 1.5px solid var(--color-lilac-soft);
+    border-bottom: 1.5px solid var(--color-lilac-soft);
+    transform: rotate(-45deg);
+  }
+
+  /* ---- Como funciona (#como-funciona) ---- */
+  .passo__numero {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 2.25rem;
+    color: var(--color-lilac-soft);
+    opacity: 0.6;
+  }
+  .passo__titulo {
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #fff;
+  }
+  .passo__texto {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .6);
+  }
+
+  /* ---- Perguntas frequentes (#faq) ----
+     <details>/<summary> nativos: acordeão acessível e operável por teclado
+     sem precisar de JS. */
+  .faq-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .03);
+    overflow: hidden;
+  }
+  .faq-item__pergunta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    list-style: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* remove o marcador padrão (triângulo) do <summary> nos navegadores que o desenham */
+  .faq-item__pergunta::-webkit-details-marker { display: none; }
+  .faq-item__pergunta:hover { color: var(--color-lilac-soft); }
+  .faq-item__seta {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, .5);
+    transition: transform .25s ease;
+  }
+  .faq-item[open] .faq-item__seta { transform: rotate(180deg); }
+  .faq-item__resposta {
+    padding: 0 24px 22px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .65);
+  }
+  /* Abertura suave em vez do salto seco padrão do <details> */
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-item__resposta {
+      animation: faqAbre .25s cubic-bezier(.22, 1, .36, 1) both;
+    }
+  }
+  @keyframes faqAbre {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ---- Formulário de captação em etapas — abre como popup (#lead-modal) ----
+     Mobile first: inputs com 48px+ de alvo de toque e 16px de fonte (abaixo
+     disso o Safari no iPhone dá zoom ao focar). O vidro/realce fica no
+     diálogo do popup (reaproveita .glass-card ali), e o raio/realce dos
+     botões vem do .btn-shine — nada disso introduz linguagem nova. */
+
+  /* Camada de fundo: cobre a tela toda, escurece o site por trás. */
+  .lead-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  @media (min-width: 640px) {
+    .lead-overlay { padding: 32px; }
+  }
+  .lead-overlay__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .lead-overlay.is-open .lead-overlay__backdrop { opacity: 1; }
+
+  /* Diálogo: mesmo vidro escuro do .glass-card, só que opaco o bastante (a
+     própria seção Pacotes ao fundo não pode "vazar" através do popup). */
+  .lead-overlay__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 24px;
+    padding: 24px 20px;
+    background: #0d0d13;
+    border: 1px solid rgba(255, 255, 255, .18);
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6);
+    opacity: 0;
+    transform: translateY(16px) scale(.98);
+    transition: opacity .3s cubic-bezier(.22, 1, .36, 1), transform .3s cubic-bezier(.22, 1, .36, 1);
+  }
+  .lead-overlay.is-open .lead-overlay__dialog {
+    opacity: 1;
+    transform: none;
+  }
+  @media (min-width: 640px) {
+    .lead-overlay__dialog { padding: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lead-overlay__backdrop,
+    .lead-overlay__dialog { transition: none; }
+  }
+
+  .lead-overlay__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, .6);
+    background: rgba(255, 255, 255, .06);
+    transition: color .2s ease, background .2s ease;
+  }
+  .lead-overlay__close:hover,
+  .lead-overlay__close:focus-visible {
+    color: #fff;
+    background: rgba(255, 255, 255, .14);
+  }
+
+  .lead {
+    text-align: left; /* a seção Contato (fora do popup) é centralizada; o formulário não */
+  }
+
+  .lead__head { margin-bottom: 24px; }
+  .lead__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, .65);
+  }
+  .lead__eyebrow .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+  .lead__bar {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    overflow: hidden;
+  }
+  .lead__bar-fill {
+    display: block;
+    height: 100%;
+    width: 20%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-brand), var(--color-lilac-soft));
+    transition: width .45s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  /* 4px de folga lateral pra que o overflow:hidden (necessário pra animar a
+     altura) não corte o anel de foco dos campos nas bordas. */
+  .lead__steps {
+    overflow: hidden;
+    padding: 0 4px;
+    margin: 0 -4px;
+    transition: height .35s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .lead-step {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+  .lead-step:focus { outline: none; }
+  .lead-step.is-active {
+    animation: leadStepIn .35s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  @keyframes leadStepIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  .lead-step__title {
+    padding: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: #fff;
+  }
+  @media (min-width: 640px) {
+    .lead-step__title { font-size: 1.75rem; }
+  }
+  .lead-step__hint {
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .lead-field { margin-top: 20px; }
+  .lead-label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, .7);
+  }
+  .lead-label--sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .lead-req { color: var(--color-lilac-soft); }
+
+  .lead-input {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .04);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 16px; /* trava o zoom automático do iOS ao focar */
+    line-height: 1.4;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .lead-input::placeholder { color: rgba(255, 255, 255, .3); }
+  .lead-input:hover { border-color: rgba(255, 255, 255, .3); }
+  .lead-input:focus {
+    outline: none;
+    border-color: var(--color-lilac-soft);
+    background: rgba(255, 255, 255, .07);
+    box-shadow: 0 0 0 3px rgba(126, 146, 255, .22);
+  }
+  .lead-input.is-invalid {
+    border-color: #ff9b9b;
+    box-shadow: 0 0 0 3px rgba(255, 155, 155, .16);
+  }
+  .lead-input--area {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .lead-erro {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #ff9b9b;
+  }
+
+  .lead-grouplabel {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, .7);
+  }
+  .lead-grouplabel--gap { margin-top: 28px; }
+
+  .lead-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  /* O grupo inteiro (não um rádio isolado) fica marcado quando obrigatório
+     e nada foi escolhido ainda. */
+  .lead-choices.is-invalid .lead-choice__box {
+    border-color: #ff9b9b;
+    box-shadow: 0 0 0 3px rgba(255, 155, 155, .16);
+  }
+  .lead-choice { display: block; cursor: pointer; }
+  /* Fica invisível mas continua focável pelo teclado e visível pro leitor de
+     tela — por isso opacity/1px em vez de display:none. */
+  .lead-choice__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .lead-choice__box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .04);
+    color: rgba(255, 255, 255, .85);
+    font-size: 0.95rem;
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+  }
+  .lead-choice:hover .lead-choice__box {
+    border-color: rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .07);
+  }
+  .lead-choice__input:focus-visible + .lead-choice__box {
+    outline: 2px solid var(--color-lilac);
+    outline-offset: 3px;
+  }
+  .lead-choice__input:checked + .lead-choice__box {
+    border-color: var(--color-lilac-soft);
+    background: rgba(5, 47, 255, .18);
+    color: #fff;
+  }
+  .lead-choice__mark {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .4);
+    transition: border-color .2s ease;
+  }
+  .lead-choice__mark::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 999px;
+    background: var(--color-lilac-soft);
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .lead-choice__input:checked + .lead-choice__box .lead-choice__mark {
+    border-color: var(--color-lilac-soft);
+  }
+  .lead-choice__input:checked + .lead-choice__box .lead-choice__mark::after {
+    opacity: 1;
+  }
+
+  .lead__nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .lead__back {
+    flex-shrink: 0;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: transparent;
+    color: rgba(255, 255, 255, .75);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .lead__back:hover {
+    border-color: var(--color-lilac-soft);
+    color: #fff;
+  }
+  .lead__next {
+    flex: 1;
+    min-height: 52px;
+    padding: 14px 24px;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+  }
+
+  .lead__done { text-align: center; }
+  .lead__done:focus { outline: none; }
+  .lead__done-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: #fff;
+  }
+  .lead__done-text {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, .65);
+  }
+  .lead__done-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    min-height: 52px;
+    padding: 14px 24px;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .lead__lgpd {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, .4);
   }
 
   /* Case study layout — sticky metadata sidebar + alternating text/image content */
