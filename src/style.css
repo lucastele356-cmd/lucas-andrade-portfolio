@@ -1103,6 +1103,27 @@
     transform: rotate(-45deg);
   }
 
+  /* Pacote em destaque (selo "Recomendado") — a faixa do selo usa margem
+     negativa igual ao padding do cartão (p-7 = 28px) pra sangrar até a borda;
+     o overflow:hidden do .glass-card já cuida de recortá-la nos cantos
+     arredondados, então não precisa de raio próprio. */
+  .pacote--destaque {
+    border-color: rgba(126, 146, 255, .4);
+  }
+  .pacote__selo {
+    display: block;
+    margin: -28px -28px 20px;
+    padding: 10px 28px;
+    background: var(--color-lilac-soft);
+    color: #0a1f8f;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
   /* ---- Como funciona (#como-funciona) ---- */
   .passo__numero {
     font-family: var(--font-display);
