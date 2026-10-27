@@ -11,7 +11,7 @@ const projeto = projetos[params.get('slug')]
 if (!projeto) {
   window.location.href = '/#projetos'
 } else {
-  document.title = `${projeto.titulo} — Lucas Andrade Design`
+  document.title = `${projeto.titulo} | Lucas Andrade Design`
 
   document.getElementById('case-eyebrow').textContent = projeto.categoriaLabel
   document.getElementById('case-title').textContent = projeto.titulo
